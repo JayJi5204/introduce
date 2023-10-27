@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/Header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/BoardPage.css}"/>
+</head>
+<title>게시판</title>
+<body>
+<div class="container">
+    <div th:replace="fragments/Header :: Header"/>
+    <div class="sidebar_setting ms-4">
+        <div th:replace="fragments/Sidebar :: Sidebar"/>
+        <div class="ms-3">
+            <div class="ms-4 mt-4  container">
+                <h4 class="text-center table_title_boarder">게시판</h4>
+            <table class="container text-center ">
+                <tr class="row table_tr_boarder">
+                    <th class="col">글 번호</th>
+                    <th class="col-6">글 제목</th>
+                    <th class="col">글 내용</th>
+
+                    <!--<th>delete</th>-->
+                </tr>
+                <tr class="row table_tr_boarder" th:each="boardForm : ${boardEntities}">
+                    <td class="col" th:text="${boardForm.id}"></td>
+                    <td class="col-6" th:text="${boardForm.title}"></td>
+                    <td class="col" th:text="${boardForm.content}"></td>
+                    <!-- <td><a href="/person" th:href="@{'person/delete/' + ${person.id}}">삭제</a></td>-->
+                </tr>
+            </table>
+                <select>
+                    <option>글 제목</option>
+                    <option>글 내용</option>
+                    <option>작성자</option>
+                </select>
+                <input type="search"/>
+                <button type="submit">검색</button>
+                <a th:href="@{/board/write}">
+                    <button>글작성</button>
+                </a>
+        </div>
+        </div>
+
+
+    </div>
+    <div th:replace="fragments/Footer :: Footer"/>
+</div>
+</body>
+</html>

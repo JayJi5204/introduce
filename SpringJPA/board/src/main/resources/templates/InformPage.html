@@ -1,0 +1,148 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/Header.css}"/>
+    <title>정보</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/Header :: Header"/>
+    <div class="sidebar_setting ms-4">
+    <div th:replace="fragments/Sidebar :: Sidebar"/>
+        <div class="col-lg-9 mt-4  container-fluid">  <!--메인 내용-->
+            <h5>학력사항</h5>
+            <div class="border_1"><table class="table" id="text_center">
+                <thead>
+                <tr>
+                    <th>기 간</th>
+                    <th>학 교 명</th>
+                    <th>전 공</th>
+                    <th>구 분</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <tr>
+                    <td>2015년 03월 ~ 2021년 02월</td>
+                    <td>평택 대학교</td>
+                    <td>중국학과</td>
+                    <td>졸업</td>
+                </tr>
+                <tr>
+                    <td>2012년 03월 ~ 2015년 02월</td>
+                    <td>포곡 고등학교</td>
+                    <td>-</td>
+                    <td>졸업</td>
+                </tr>
+                </tbody>
+            </table></div>
+            <div class="mt-4">
+                <h5>교육 이수내역</h5>
+                <div class="border_1"><table class="table" id="text_center">
+                    <thead>
+                    <tr>
+                        <th scope="col">기 간</th>
+                        <th scope="col">교 육 과 정</th>
+                        <th scope="col">기 관 명</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>2023년 02월 ~ 2023년 09월</td>
+                        <td >프로젝트기반 풀스택(프론트, 백엔드) 개발자(자바, 스프링, 리액트) 양성</td>
+                        <td>그린 컴퓨터 아카데미(성남)</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h5>경력사항</h5>
+                <div class="border_1"><table class="table" id="text_center">
+                    <thead>
+                    <tr>
+                        <th scope="col">기 간</th>
+                        <th scope="col">회 사 명</th>
+                        <th scope="col">담 당 업 무</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>2021년 08월 ~ 2021년 10월</td>
+                        <td>서울 게임 아카데미</td>
+                        <td>학생 관리 및 상담, 코치 관리, 학부모 상담</td>
+                    </tr>
+                    </tbody>
+                </table></div> </div>
+            <div class="mt-4">
+                <h5>자격사항</h5>
+                <div class="border_1"><table class="table" id="text_center">
+                    <thead>
+                    <tr>
+                        <th scope="col">취 득 일</th>
+                        <th scope="col">자 격 증 명</th>
+                        <th scope="col">발 급 기 관</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>2022년 10월 28일</td>
+                        <td>컴퓨터활용능력 2급</td>
+                        <td>대한상공회의소</td>
+                    </tr>
+                    <tr>
+                        <td>2022년 05월</td>
+                        <td>新HSK 5급</td>
+                        <td>중국국가한반</td>
+                    </tr>
+                    <tr>
+                        <td>2021년 12월</td>
+                        <td>2종 보통운전면허</td>
+                        <td>경찰정(운전면허시험관리단)</td>
+                    </tr>
+                    </tbody>
+                </table></div> </div>
+            <div class="mt-4">
+                <h5>교육 이수내역</h5>
+                <div class="border_1"><table class="table" id="text_center">
+                    <thead>
+                    <tr>
+                        <th scope="col">프 로 그 램</th>
+                        <th scope="col">활 용 능 력</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>HTML</td>
+                        <td >홈페이지의 외형을 만들 수 있음</td>
+                    </tr>
+                    <tr>
+                        <td>CSS3</td>
+                        <td >홈페이지의 외형을 만들 수 있음</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td >홈페이지의 동작을 만들 수 있음</td>
+                    </tr>
+                    <tr>
+                        <td>Bootstrap</td>
+                        <td >반응형 홈페이지를 만들 수 있음</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td >기본적인 프로그램을 만들 수 있음</td>
+                    </tr>
+                    <tr>
+                        <td>Spring</td>
+                        <td >간단한 게임을 만들 수 있음</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/Footer :: Footer"/>
+</div>
+</body>
+</html>

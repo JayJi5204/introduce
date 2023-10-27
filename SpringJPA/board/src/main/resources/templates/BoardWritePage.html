@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+  <link rel="stylesheet" th:href="@{/css/Header.css}"/>
+  <title>게시글 작성</title>
+</head>
+<body>
+<div class="container">
+  <div th:replace="fragments/Header :: Header"/>
+  <div class="sidebar_setting ms-4">
+    <div th:replace="fragments/Sidebar :: Sidebar"/>
+    <div class="ms-3">
+      <div class="ms-4 mt-4  container-fluid">
+    <form role="form" action="/board/write" th:object="${boardForm}" method="post">
+    <div>
+        <label th:for="title">글 제목</label>
+      <input type="text" th:field="*{Title}" placeholder="제목을 입력하세요">
+    </div>
+      <div>
+        <label th:for="content">글 내용</label>
+        <input type="text" th:field="*{Content}" placeholder="내용을 입력하세요" >
+    </div>
+      <button type="submit">작성완료</button>
+    </form>
+      </div>
+    </div>
+  </div>
+  <div th:replace="fragments/Footer :: Footer"/>
+</div>
+</body>
+</html>

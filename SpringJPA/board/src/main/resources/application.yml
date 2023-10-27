@@ -15,6 +15,12 @@ spring:
       hibernate:
         format_sql: true
 
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mvc:
+      static-path-pattern: "/static/**"
+
 logging:
   level:
     org.hibernate.SQL: debug
