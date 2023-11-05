@@ -14,18 +14,21 @@
         <div class="ms-3">
             <div class="ms-4 mt-4  container">
                 <h4 class="text-center table_title_boarder">게시판</h4>
-            <table class="container text-center ">
+            <table class="container text-center">
                 <tr class="row table_tr_boarder">
-                    <th class="col">글 번호</th>
+                    <th class="col-2">글 번호</th>
                     <th class="col-6">글 제목</th>
-                    <th class="col">글 내용</th>
+                    <th class="col-2">글 내용</th>
+                    <th class="col-2">작성일</th>
+
 
                     <!--<th>delete</th>-->
                 </tr>
                 <tr class="row table_tr_boarder" th:each="boardForm : ${boardEntities}">
-                    <td class="col" th:text="${boardForm.id}"></td>
-                    <td class="col-6" th:text="${boardForm.title}"></td>
-                    <td class="col" th:text="${boardForm.content}"></td>
+                    <td class="col-2"><a th:text="${boardForm.id}"></a></td>
+                    <td class="col-6"><a th:href="@{/board/{id}(id=${boardForm.id})}"  th:text="${boardForm.title}">제목</a></td>
+                    <td class="col-2"><a th:text="${boardForm.content}"></a></td>
+                    <td class="col-2" th:text="${#temporals.format(boardForm?.createAt, 'MM-dd')?:'No Date'}"></td>
                     <!-- <td><a href="/person" th:href="@{'person/delete/' + ${person.id}}">삭제</a></td>-->
                 </tr>
             </table>

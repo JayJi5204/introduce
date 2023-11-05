@@ -2,8 +2,11 @@ package introduce.board.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,12 +22,16 @@ public class BoardEntity {
 
     private String content; //글 내용
 
+    @CreationTimestamp
+    private LocalDateTime createAt; //작성일
+
+    @UpdateTimestamp
+    private LocalDateTime fixAt;    //수정일
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserEntity_Id")
     private UserEntity userEntity;  //UserEntity
 
-    @Embedded
-    private DateEntity dateEntity;  //DateEntity
 
 
 }
