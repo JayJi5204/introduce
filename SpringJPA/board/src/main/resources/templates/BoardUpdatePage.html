@@ -22,7 +22,7 @@
                         <label th:for="price">내용</label>
                             <input type="text" th:field="*{content}" class="form-control"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">수정완료</a></button>
+                    <button type="submit" class="btn btn-primary"><a th:href="@{/board/{id}(id=${boardForm.id})}">수정완료</a></button>
                     <button class="btn btn-danger"><a th:href="@{/board/{id}/delete(id=${boardForm.id})}">삭제</a></button>
                     <button class="btn btn-warning"><a th:href="@{/board}">글 목록</a></button>
 
