@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/javascript/SideBar.js}"></script>
 </head>
 <body>
 <div class="sidebar" th:fragment="Sidebar">
@@ -18,7 +20,7 @@
             <div class="card-body mt-2 ms-2" id="sidePic"> <!--사이드바 내용-->
                 <div class="d-flex">
                     <h5 class="card-title me-4">지성현</h5>
-                    <div class="ms-5" id="cursor">+</div>
+                    <div id="cursor" class="ms-5">+</div>
                 </div>
                 <p class="card-text">
                     <li>생년월일 : 1996. 02. 20</li>

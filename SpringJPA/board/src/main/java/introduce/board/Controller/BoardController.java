@@ -1,19 +1,17 @@
 package introduce.board.Controller;
 
+import introduce.board.DTO.BoardDTO;
 import introduce.board.Entity.BoardEntity;
-import introduce.board.Form.BoardForm;
 import introduce.board.Service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,18 +24,12 @@ public class BoardController {
     //게시글 작성
     @GetMapping("/board/write")
     public String GetBoardWritePage(Model model) {
-        log.info("BoardWritePage");
-        model.addAttribute("boardForm", new BoardForm());
+        model.addAttribute("boardForm", new BoardDTO());
         return "BoardWritePage";
     }
 
-    /*    @PostMapping("/board/write")
-        public String PostBoardWritePage(@Valid BoardForm boardForm) {
-            boardService.saveBoard(boardForm.toEntity());
-            return "redirect:/board";
-        }*/
     @PostMapping("/board/write")
-    public String PostBoardWritePage(@Valid BoardForm boardForm) {
+    public String PostBoardWritePage(@Valid BoardDTO boardForm) {
         BoardEntity savedBoardEntity = boardService.saveBoard(boardForm.toEntity());
         boardForm.setCreateAt(savedBoardEntity.getCreateAt());
         boardForm.setFixAt(savedBoardEntity.getFixAt());
@@ -47,41 +39,31 @@ public class BoardController {
 
     //게시글 리스트 화면
     @GetMapping("/board")
-    public String GetBoardPage(Model model) {
-        log.info("BoardPage");
-        List<BoardEntity> boardEntities = boardService.findBoard();
-        model.addAttribute("boardEntities", boardEntities);
+    public String GetBoardPage(@RequestParam(defaultValue = "0") int page, Model model) {
+        Page<BoardEntity> boardPage = boardService.findBoards(page);
+        model.addAttribute("boardEntities", boardPage);
         return "BoardPage";
     }
+
 
     //각 번호 게시글
     @GetMapping("/board/{id}")
     public String GetBoard(@PathVariable("id") Long id, Model model) {
         Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-        BoardForm boardForm = BoardForm.boardForms(boardOptional.get());
+        BoardDTO boardForm = BoardDTO.boardForms(boardOptional.get());
         model.addAttribute("boardForm", boardForm);
         return "BoardIdPage";
     }
- /*   @PostMapping("/board/{id}")
-    public String PostBoard(@PathVariable Long id, @ModelAttribute("boardForm") BoardForm boardForm) {
-        BoardEntity boardEntity = boardForm.toEntity();
-        boardEntity.setId(id); // 아이디를 설정해 주어야 합니다.
-        boardService.saveBoard(boardEntity);
-        return "redirect:/board/" + id;
-    }*/
+
 
     @PostMapping("/board/{id}")
-    public String PostBoard(@PathVariable Long id, @ModelAttribute("boardForm") BoardForm boardForm) {
+    public String PostBoard(@PathVariable("id")  Long id, @ModelAttribute("boardForm") BoardDTO boardForm) {
         Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-
         BoardEntity boardEntity = boardOptional.get();
+
         boardEntity.setTitle(boardForm.getTitle());
         boardEntity.setContent(boardForm.getContent());
-
-        BoardEntity savedBoardEntity = boardService.saveBoard(boardEntity);
-
-        boardForm.setCreateAt(savedBoardEntity.getCreateAt());
-        boardForm.setFixAt(savedBoardEntity.getFixAt());
+        boardService.saveBoard(boardEntity);
         return "redirect:/board/" + id;
     }
 
@@ -90,44 +72,27 @@ public class BoardController {
     @GetMapping("/board/{id}/update")
     public String GetUpdateBoard(@PathVariable("id") Long id, Model model) {
         Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-        BoardForm boardForm = BoardForm.boardForms(boardOptional.get());
+        BoardDTO boardForm = BoardDTO.boardForms(boardOptional.get());
         model.addAttribute("boardForm", boardForm);
         return "BoardUpdatePage";
     }
 
-    /*    @PostMapping("/board/{id}/update")
-        public String PostUpdateBoard(@PathVariable Long id, @ModelAttribute("boardForm")BoardForm boardForm, Model model){
-            BoardEntity boardEntity = boardForm.toEntity();
-            boardEntity.setId(id);
-            boardService.saveBoard(boardEntity);
-            BoardForm updatedForm = BoardForm.boardForms(boardEntity);
-            model.addAttribute("boardForm", updatedForm);
-            return "redirect:/board/{id}/update";
-        }*/
+
     @PostMapping("/board/{id}/update")
-    public String PostUpdateBoard(@PathVariable Long id, @ModelAttribute("boardForm") BoardForm boardForm, Model model) {
-        BoardEntity boardEntity = boardForm.toEntity();
-        boardEntity.setId(id);
-        BoardEntity updatedBoardEntity = boardService.saveBoard(boardEntity);
-        BoardForm updatedForm = BoardForm.boardForms(updatedBoardEntity);
-        model.addAttribute("boardForm", updatedForm);
-        return "redirect:/board/" + id;
+    public String PostUpdateBoard() {
+        log.info("TestPage2");
+        return "redirect:/board/{id}";
+
     }
 
 
     //게시글 삭제
- /* @GetMapping("/board/{id}/delete")
-  public String GetBoardDelete(@PathVariable Long id,BoardForm boardForm){
-      boardService.deleteBoard(boardForm.toEntity());
-    return "redirect:/board";
-    }
-*/
-
-
     @GetMapping("/board/{id}/delete")
     public String GetBoardDelete(@PathVariable Long id) {
         Optional<BoardEntity> boardOptional = boardService.getBoard(id);
         boardService.deleteBoard(id);
         return "redirect:/board";
     }
+
+
 }

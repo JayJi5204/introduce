@@ -1,4 +1,4 @@
-package introduce.board.Form;
+package introduce.board.DTO;
 
 
 import introduce.board.Entity.BoardEntity;
@@ -9,15 +9,15 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class BoardForm {
+public class BoardDTO {
     private Long id;
     private String title;
     private String content;
     private LocalDateTime createAt;
     private LocalDateTime fixAt;
 
-    public static BoardForm boardForms(BoardEntity boardEntity) {
-        BoardForm boardForm = new BoardForm();
+    public static BoardDTO boardForms(BoardEntity boardEntity) {
+        BoardDTO boardForm = new BoardDTO();
         boardForm.setId(boardEntity.getId());
         boardForm.setTitle(boardEntity.getTitle());
         boardForm.setContent(boardEntity.getContent());
@@ -31,6 +31,8 @@ public class BoardForm {
         boardEntity.setId(this.id);
         boardEntity.setTitle(this.title);
         boardEntity.setContent(this.content);
+        boardEntity.setCreateAt(this.createAt);
+        boardEntity.setFixAt(this.fixAt);
         return boardEntity;
     }
 }

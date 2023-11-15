@@ -1,0 +1,19 @@
+.board_content{
+    white-space: pre-line;
+    word-break: break-all;
+    min-height: 15rem;
+}
+
+.test{
+   border-top: solid 1px rgb(209, 207, 207);
+}
+
+.reply_textarea{
+    resize: none;
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+.reply_button{
+ text-align: left;
+}

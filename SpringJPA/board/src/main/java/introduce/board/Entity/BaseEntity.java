@@ -1,21 +1,25 @@
 package introduce.board.Entity;
 
-
+import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public class BaseEntity {
+@EntityListeners(value = {AuditingEntityListener.class})
+@Getter
+abstract class BaseEntity {
 
     @CreatedDate
-    private LocalDateTime createAt; //작성일
+    @Column(updatable = false)
+    private LocalDateTime creatAt;
 
     @LastModifiedDate
-    private LocalDateTime fixAt;    //수정일
+    private LocalDateTime fixAt;
 }

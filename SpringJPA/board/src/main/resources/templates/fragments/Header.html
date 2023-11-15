@@ -12,10 +12,6 @@
                 <div class="p-2"><a th:href="@{/inform}">정보</a></div>
                 <div class="p-2"> <a th:href="@{/intro}">소개서</a></div>
                 <div class="p-2"><a th:href="@{/board}">게시판</a></div>
-                <div class="p-2"><a th:each="signupForm : ${signUpForm}"
-                                    th:text="${signupForm.userName}?:'회원등록'"
-                                    >회원등록1</a></div>
-                <div class="p-2"><a th:href="@{/signup}">회원등록</a></div>
             </div>
         </div>
     </nav>

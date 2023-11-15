@@ -4,6 +4,8 @@
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
     <link rel="stylesheet" th:href="@{/css/Header.css}"/>
     <link rel="stylesheet" th:href="@{/css/BoardPage.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/javascript/SideBar.js}"></script>
 </head>
 <title>게시판</title>
 <body>
@@ -11,38 +13,46 @@
     <div th:replace="fragments/Header :: Header"/>
     <div class="sidebar_setting ms-4">
         <div th:replace="fragments/Sidebar :: Sidebar"/>
-        <div class="ms-3">
+        <div class="col-lg-9 mt-1  container-fluid">
             <div class="ms-4 mt-4  container">
-                <h4 class="text-center table_title_boarder">게시판</h4>
-            <table class="container text-center">
-                <tr class="row table_tr_boarder">
-                    <th class="col-2">글 번호</th>
-                    <th class="col-6">글 제목</th>
-                    <th class="col-2">글 내용</th>
-                    <th class="col-2">작성일</th>
+                <h4 class="text-center table_title_boarder pb-3">게시판</h4>
+                <table class="container text-center ">
+                    <thead>
+                    <tr class="row table_tr_boarder pb-2">
+                        <th class="col-2 ">글 번호</th>
+                        <th class="col-6">글 제목</th>
+                        <th class="col-2">작성일</th>
+                        <th class="col-2">수정일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="row table_tr_boarder p-1" th:each="boardForm : ${boardEntities}">
+                        <td class="col-2 "><a th:text="${boardForm.id}">글 번호</a></td>
+                        <td class="col-6"><a th:href="@{/board/{id}(id=${boardForm.id})}" th:text="${boardForm.title}">글
+                            제목</a>
+                        </td>
+                        <td class="col-2" th:text="${#temporals.format(boardForm?.createAt, 'MM-dd')}"></td>
+                        <td class="col-2" th:text="${#temporals.format(boardForm?.fixAt, 'MM-dd')}"></td>
 
-
-                    <!--<th>delete</th>-->
-                </tr>
-                <tr class="row table_tr_boarder" th:each="boardForm : ${boardEntities}">
-                    <td class="col-2"><a th:text="${boardForm.id}"></a></td>
-                    <td class="col-6"><a th:href="@{/board/{id}(id=${boardForm.id})}"  th:text="${boardForm.title}">제목</a></td>
-                    <td class="col-2"><a th:text="${boardForm.content}"></a></td>
-                    <td class="col-2" th:text="${#temporals.format(boardForm?.createAt, 'MM-dd')?:'No Date'}"></td>
-                    <!-- <td><a href="/person" th:href="@{'person/delete/' + ${person.id}}">삭제</a></td>-->
-                </tr>
-            </table>
-                <select>
-                    <option>글 제목</option>
-                    <option>글 내용</option>
-                    <option>작성자</option>
-                </select>
-                <input type="search"/>
-                <button type="submit">검색</button>
-                <a th:href="@{/board/write}">
-                    <button>글작성</button>
-                </a>
-        </div>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center mt-2">
+                    <div>
+                        <form>
+                            <select>
+                                <option>글 제목</option>
+                                <option>글 내용</option>
+                            </select>
+                            <input type="search"/>
+                            <button class="btn btn-success btn-sm" type="submit">검색</button>
+                        </form>
+                    </div>
+                    <div class="d-flex"><a th:href="@{/board/write}">
+                        <button class="btn btn-primary btn-sm ms-1">글작성</button>
+                    </a></div>
+                </div>
+            </div>
         </div>
 
 

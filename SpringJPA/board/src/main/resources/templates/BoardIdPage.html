@@ -3,6 +3,9 @@
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
     <link rel="stylesheet" th:href="@{/css/Header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/BoardIdPage.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/javascript/SideBar.js}"></script>
     <title>게시글</title>
 </head>
 <body>
@@ -10,34 +13,48 @@
     <div th:replace="fragments/Header :: Header"/>
     <div class="sidebar_setting ms-4">
         <div th:replace="fragments/Sidebar :: Sidebar"/>
-        <div class="ms-3">
-        <div class="ms-4 mt-4  container">
-            <form th:object="${boardForm}" th:action="@{/board/{id}/update(id=${boardForm.id})}" method="post">
-            <div class="form-group">
-                <label th:for="name">제목</label>
-                <div><a th:text="${boardForm.title}" class="form-control">제목</a></div>
-            </div>
-            <div class="form-group">
-                <label th:for="price">내용</label>
-                <div><a th:text="${boardForm.content}" class="form-control">내용</a></div>
-            </div>
-            <div class="form-group">
-                <label th:for="price">작성일</label>
-                <div><a th:text="${#temporals.format(boardForm?.createAt, 'MM-dd')?:'No Date'}" class="form-control">작성일</a></div>
-            </div>
-                <div class="form-group">
-                    <label th:for="price">수정일</label>
-                    <div><a th:text="${#temporals.format(boardForm?.fixAt, 'MM-dd')?:'No Date'}" class="form-control">수정일</a></div>
-                </div>
-            <button class="btn btn-primary"><a th:href="@{/board/{id}/update(id=${boardForm.id})}">수정</a></button>
-            <button class="btn btn-danger"><a th:href="@{/board/{id}/delete(id=${boardForm.id})}">삭제</a></button>
-            <button class="btn btn-warning"><a th:href="@{/board}">글 목록</a></button>
+        <div class="col-lg-9 mt-1  container-fluid">
+            <div class="ms-4 mt-4  container">
+                <form method="post" th:action="@{/board/{id}/update(id=${boardForm.id})}" th:object="${boardForm}">
 
-        </form>
-    </div>
+                    <div class="card">
+                        <h5 class="card-header"><a th:text="${boardForm.title}">제목</a></h5>
+                        <div class="card-body">
+                            <p class="card-text board_content"><a th:text="${boardForm.content}">내용</a></p>
+                        </div>
+                        <div class="test">
+                            <li class="ms-4 mt-2">
+                                <p> 작성일 : <a th:text="${#temporals.format(boardForm?.createAt, 'YYYY-MM-dd')}">작성일</a>
+                                </p>
+                                <p> 수정일 : <a th:text="${#temporals.format(boardForm?.fixAt, 'YYYY-MM-dd')}">수정일</a></p>
+                            </li>
+                        </div>
+                        <ul class="list-group list-group-flush ">
+
+                            <li class="list-group-item d-flex">
+                                <textarea class="form-control  reply_textarea  me-5"
+                                          placeholder="댓글을 입력해주세요"></textarea>
+                                <button class="btn btn-primary reply_button" type="submit" th:text="댓글작성">댓글작성1</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-3">
+                        <button class="btn btn-primary me-1"><a
+                                th:href="@{/board/{id}/update(id=${boardForm.id})}">수정</a>
+                        </button>
+                        <button class="btn btn-danger me-1"><a
+                                th:href="@{/board/{id}/delete(id=${boardForm.id})}">삭제</a>
+                        </button>
+                        <button class="btn btn-warning"><a th:href="@{/board}">글 목록</a></button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
     <div th:replace="fragments/Footer :: Footer"/>
+</div>
 </div>
 </body>
 </html>

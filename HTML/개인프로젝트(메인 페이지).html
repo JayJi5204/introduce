@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -18,15 +16,14 @@
         color: black;
         text-decoration: none;
       }
-      a:hover{
+      a:hover {
         color: gray;
       }
       li {
         list-style-type: none;
         font-size: 14px;
       }
-      #navOutline{
-        
+      #navOutline {
         border: solid 1px rgb(199, 196, 196);
       }
       #Navbar {
@@ -35,90 +32,114 @@
       #sidePic {
         border-top: solid 1px rgb(199, 196, 196);
       }
-      #li_float{
+      #li_float {
         float: left;
       }
-      #cursor{
+      #cursor {
         cursor: pointer;
       }
 
-      #center{
-       
-       align-items: center;
+      #center {
+        align-items: center;
       }
     </style>
   </head>
   <body>
     <section class="container">
+      <nav class="navbar mt-3" id="navOutline">
+        <!--네비게이션 바-->
+        <div class="container-fluid">
+          <!--네비게이션 브랜드-->
+          <a class="navbar-brand ms-4" href="개인프로젝트(메인 페이지).html"
+            >J.sh</a
+          >
 
-    <nav class="navbar mt-3" id="navOutline"> <!--네비게이션 바-->
-      <div class="container-fluid"> <!--네비게이션 브랜드-->
-        <a class="navbar-brand ms-4" href="개인프로젝트(메인 페이지).html">J.sh</a>
-
-            <div class="d-flex me-4">  <!--네비게이션 옵션-->
-              <div class="p-2"><a href="개인프로젝트(정보).html">정보</a></div>
-              <div class="p-2"> <a href="개인프로젝트(소개서).html">소개서</a></div>
-              <div class="p-2"><a href="개인프로젝트(게시판).html">게시판</a></div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="row d-flex mt-4 ">  <!--사이드바 + 메인-->
-
-      <div class="col-lg-3 mb-4 h-25 container-fluid  card shadow"  style="width: 14rem"> <!--사이드바-->
-        <div class="mx-4 mt-3"> <!--사이드바 사진-->
-          <img
-            src="https://github.com/JayJi5204/Project/blob/main/Image/%EC%A6%9D%EB%AA%85%EC%82%AC%EC%A7%84.jpg?raw=true"
-            class="card-img-top img-fluid"
-            style="width: 15rem"
-            style="height: 20rem"
-            alt="증명사진"
-          />
-        </div>
-
-        <div class="card-body mt-2 ms-2" id="sidePic"> <!--사이드바 내용-->
-          <div class="d-flex"> 
-          <h5 class="card-title me-4">지성현</h5>
-          <div class="ms-5" id="cursor">+</div>
-        </div>
-          <p class="card-text">
-            <li>생년월일 : 1996. 2. 20</li>
-            <li>거주지 : 경기도 용인시</li>
-            <li>학력 : 평택대학교(졸업)</li>
-            <li>경력사항 : 신입</li>
-          </p>
-        </div>
-      </div>
-
-      <div class="col-lg-9  container-fluid">  <!--메인 내용-->
-        <div class="card mb-3"> <!--메인 1-->
-          <img src="https://github.com/JayJi5204/Project/blob/main/Image/%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg?raw=true" class="card-img-top" alt="예시이미지">
-          <div class="card-body">
-            <h5 class="card-title p-1">지성현이란?</h5>
-            <p class="card-text p-1">지성현에 대해서 궁금하신가요? 그럼 아래 버튼을 클릭해보세요!</p>
-            <a href="개인프로젝트(정보).html" class="btn btn-primary">바로가기 -></a>
-          </div>
-        </div> 
-
-        <div class="card mb-3"> <!--메인 2-->
-          <img src="https://github.com/JayJi5204/Project/blob/main/Image/%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%802.jpg?raw=true" class="card-img-top" alt="예시이미지">
-          <div class="card-body">
-            <h5 class="card-title p-1">지성현의 자기소개</h5>
-            <p class="card-text p-1">처음오신 여려분들께 인사드립니다. 아래 버튼을 클릭해서 제 이야기를 들어주세요! </p>
-            <a href="개인프로젝트(소개서).html" class="btn btn-primary">바로가기 -></a>
+          <div class="d-flex me-4">
+            <!--네비게이션 옵션-->
+            <div class="p-2"><a href="개인프로젝트(정보).html">정보</a></div>
+            <div class="p-2">
+              <a href="개인프로젝트(소개서).html">소개서</a>
+            </div>
+            <div class="p-2">
+              <a href="개인프로젝트(게시판).html">게시판</a>
+            </div>
           </div>
         </div>
-       
-    
+      </nav>
+
+      <div class="row d-flex mt-4">
+        <!--사이드바 + 메인-->
+
+        <div
+          class="col-lg-3 mb-4 h-25 container-fluid card shadow"
+          style="width: 14rem"
+        >
+          <!--사이드바-->
+          <div class="mx-4 mt-3">
+            <!--사이드바 사진-->
+            <img
+              src=""
+              class="card-img-top img-fluid"
+              style="width: 15rem"
+              style="height: 20rem"
+              alt="증명사진"
+            />
+          </div>
+
+          <div class="card-body mt-2 ms-2" id="sidePic">
+            <!--사이드바 내용-->
+            <div class="d-flex">
+              <h5 class="card-title me-4">지성현</h5>
+              <div class="ms-5" id="cursor">+</div>
+            </div>
+            <p class="card-text">
+              <li>생년월일 : 1996. 2. 20</li>
+              <li>거주지 : 경기도 용인시</li>
+              <li>학력 : 평택대학교(졸업)</li>
+              <li>경력사항 : 신입</li>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-9 container-fluid">
+          <!--메인 내용-->
+          <div class="card mb-3">
+            <!--메인 1-->
+            <img src="" class="card-img-top" alt="예시이미지" />
+            <div class="card-body">
+              <h5 class="card-title p-1">지성현이란?</h5>
+              <p class="card-text p-1">
+                지성현에 대해서 궁금하신가요? 그럼 아래 버튼을 클릭해보세요!
+              </p>
+              <a href="개인프로젝트(정보).html" class="btn btn-primary"
+                >바로가기 -></a
+              >
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <!--메인 2-->
+            <img src="" class="card-img-top" alt="예시이미지" />
+            <div class="card-body">
+              <h5 class="card-title p-1">지성현의 자기소개</h5>
+              <p class="card-text p-1">
+                처음오신 여려분들께 인사드립니다. 아래 버튼을 클릭해서 제
+                이야기를 들어주세요!
+              </p>
+              <a href="개인프로젝트(소개서).html" class="btn btn-primary"
+                >바로가기 -></a
+              >
+            </div>
+          </div>
+        </div>
       </div>
-
-  </div>
-
-  </section>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    </section>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../JavaScript/SideBar.js"></script>
 </html>
