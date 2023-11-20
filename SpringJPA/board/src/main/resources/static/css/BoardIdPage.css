@@ -6,6 +6,7 @@
 
 .test{
    border-top: solid 1px rgb(209, 207, 207);
+   border-bottom: solid 1px rgb(209, 207, 207);
 }
 
 .reply_textarea{

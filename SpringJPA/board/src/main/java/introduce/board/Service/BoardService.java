@@ -10,13 +10,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
+
 
     public BoardEntity saveBoard(BoardEntity boardEntity) {
         return boardRepository.save(boardEntity);
@@ -32,10 +33,18 @@ public class BoardService {
         return boardRepository.findById(id);
     }
 
-    public Page<BoardEntity> findBoards(int pageNumber) {
-        int pageSize = 10;
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
+    public Page<BoardEntity> findBoards(Pageable pageable) {
         return boardRepository.findAll(pageable);
     }
+
+    public Page<BoardEntity> searchBoards(String option, String keyword, Pageable pageable) {
+        if ("title".equals(option)) {
+            return boardRepository.findByTitleContaining(keyword,pageable);
+        } else {
+            return boardRepository.findByContentContaining(keyword,pageable);
+        }
+    }
+
+
 }
 
