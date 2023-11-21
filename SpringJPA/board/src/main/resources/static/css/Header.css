@@ -1,5 +1,5 @@
       a {
-        color: black;
+        color: white;
         text-decoration: none;
       }
       a:hover{
@@ -33,3 +33,44 @@
       display: flex;
 
       }
+
+        html{
+          background-color: black;
+          color: white;
+        }
+        body{
+         background-color: black;
+                  color: white;
+        }
+        .body{
+          background-color: black;
+          color: white;
+        }
+        .navbar-brand{
+          color: white;
+        }
+        .borderSetting{
+          background-color: black;
+          color: white;
+          border: solid 1px white;
+        }
+        .btnHome{
+          background-color: rgb(136, 88, 237);
+          color:  white;
+        }
+        .btnHome:hover{
+          background-color: white;
+          color:  rgb(136, 88, 237);
+        }
+
+        .border_1{
+          border-top: solid 2px white;
+        }
+        .introHeadSetting .accordion-button{
+                  background-color: rgb(136, 88, 237);
+                  color:  white;
+                }
+        .introBodySetting{
+          background-color: black;
+          color: white;
+        }
