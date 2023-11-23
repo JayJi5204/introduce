@@ -25,9 +25,9 @@
                         </div>
                         <div class="body">
                             <li class="ms-4 mt-2">
-                                <p> 작성일 : <a th:text="${#temporals.format(boardForm?.createAt, 'YYYY-MM-dd')}">작성일</a>
+                                <p> 작성일 : <a th:text="${#temporals.format(boardForm?.createAt, 'YYYY-MM-dd HH:mm')}">작성일</a>
                                 </p>
-                                <p> 수정일 : <a th:text="${#temporals.format(boardForm?.fixAt, 'YYYY-MM-dd')}">수정일</a></p>
+                                <p> 수정일 : <a th:text="${#temporals.format(boardForm?.fixAt, 'YYYY-MM-dd HH:mm')}">수정일</a></p>
                             </li>
                         </div>
                     </form>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div th:replace="fragments/Footer :: Footer"/>
+
 </div>
 </div>
 </body>

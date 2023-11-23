@@ -1,76 +1,48 @@
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover{
-        color: gray;
-      }
-      li {
-        list-style-type: none;
-        font-size: 14px;
-      }
-      #navOutline{
-
-        border: solid 1px rgb(199, 196, 196);
-      }
-      #Navbar {
-        border: solid 1px black;
-      }
-      #sidePic {
-        border-top: solid 1px rgb(199, 196, 196);
-      }
-      #li_float{
-        float: left;
-      }
-      #cursor{
-        cursor: pointer;
-      }
-
-      #center{
-       align-items: center;
-      }
-      .sidebar_setting{
-      display: flex;
-
-      }
-
-        html{
-          background-color: black;
-          color: white;
-        }
-        body{
-         background-color: black;
-                  color: white;
-        }
-        .body{
-          background-color: black;
-          color: white;
-        }
-        .navbar-brand{
-          color: white;
-        }
-        .borderSetting{
-          background-color: black;
-          color: white;
-          border: solid 1px white;
-        }
-        .btnHome{
-          background-color: rgb(136, 88, 237);
-          color:  white;
-        }
-        .btnHome:hover{
-          background-color: white;
-          color:  rgb(136, 88, 237);
-        }
-
-        .border_1{
-          border-top: solid 2px white;
-        }
-        .introHeadSetting .accordion-button{
-                  background-color: rgb(136, 88, 237);
-                  color:  white;
-                }
-        .introBodySetting{
-          background-color: black;
-          color: white;
-        }
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: gray;
+}
+li {
+  list-style-type: none;
+  font-size: 14px;
+}
+#navOutline {
+  border: solid 1px rgb(199, 196, 196);
+}
+#Navbar {
+  border: solid 1px black;
+}
+#sidePic {
+  border-top: solid 1px rgb(199, 196, 196);
+}
+#li_float {
+  float: left;
+}
+#cursor {
+  cursor: pointer;
+}
+#center {
+  align-items: center;
+}
+.sidebar_setting {
+  display: flex;
+}
+.board_setting {
+  min-height: 27rem;
+}
+.toggleFront {
+  position: relative;
+  z-index: 2;
+}
+.toggleBack {
+  height: 200px;
+  top: 74px;
+  position: fixed;
+  z-index: 1;
+}
+.toggleButton {
+  position: absolute;
+}

@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class ReplyEntity extends BaseEntity{
+public class ReplyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Reply_Id")

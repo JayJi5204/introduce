@@ -1,36 +1,80 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script th:src="@{/javascript/SideBar.js}"></script>
-</head>
-<body>
-<div class="sidebar" th:fragment="Sidebar">
-    <div class="row d-flex mt-4 ">  <!--사이드바 + 메인-->
-        <div class="col-lg-3 mb-4 h-25 container-fluid  card shadow borderSetting" style="width: 14rem"> <!--사이드바-->
-            <div class="mx-4 mt-3"> <!--사이드바 사진-->
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Title</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script th:src="@{/javascript/SideBar.js}"></script>
+    </head>
+    <body>
+      <div class="sidebar" th:fragment="Sidebar">
+        <div class="toggleFront">
+          <div class="row d-flex mt-4 SideBarSetting">
+            <!--사이드바 + 메인-->
+            <div
+              class="col-lg-3 mb-4 h-25 container-fluid card shadow"
+              style="width: 14rem"
+            >
+              <!--사이드바-->
+              <div class="mx-4 mt-3">
+                <!--사이드바 사진-->
                 <img
-                        th:src="@{/images/intro.jpg}"
-                        class="card-img-top img-fluid"
-                        alt="증명사진"
+                  th:src="@{/images/intro.jpg}"
+                  class="card-img-top img-fluid"
+                  alt="증명사진"
                 />
-            </div>
-            <div class="card-body mt-2 ms-2" id="sidePic"> <!--사이드바 내용-->
+              </div>
+              <div class="card-body mt-2 ms-2" id="sidePic">
+                <!--사이드바 내용-->
                 <div class="d-flex">
-                    <h5 class="card-title me-4">지성현</h5>
-                    <div id="cursor" class="ms-5">+</div>
+                  <h5 class="card-title me-4">지성현</h5>
                 </div>
                 <p class="card-text">
+                  <li>생년월일 : 1996. 02. 20</li>
+                  <li>거주지 : 경기도 용인시</li>
+                  <li>학력 : 평택대학교(졸업)</li>
+                  <li>경력사항 : 신입</li>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <aside class="toggleBack">
+            <div class="row d-flex mt-4">
+              <div
+                class="col-lg-3 mb-4 h-25 container-fluid card shadow"
+                style="width: 14rem"
+              >
+                <!--사이드바-->
+                <div class="mx-4 mt-3">
+                  <!--사이드바 사진-->
+                  <img
+                    th:src="@{/images/intro.jpg}"
+                    class="card-img-top img-fluid"
+                    alt="증명사진"
+                  />
+                </div>
+                <div class="card-body mt-2 ms-2" id="sidePic">
+                  <!--사이드바 내용-->
+                  <div class="d-flex">
+                    <h5 class="card-title me-4">지성현2</h5>
+                  </div>
+                  <p class="card-text">
                     <li>생년월일 : 1996. 02. 20</li>
                     <li>거주지 : 경기도 용인시</li>
                     <li>학력 : 평택대학교(졸업)</li>
                     <li>경력사항 : 신입</li>
-                </p>
+                  </p>
+                </div>
+              </div>
             </div>
+            <button class="btn btn-primary toggleButton" id="more">
+              <a>More</a>
+            </button>
+          </aside>
         </div>
-    </div>
-</div>
-</body>
+      </div>
+    </body>
+  </html>
 </html>

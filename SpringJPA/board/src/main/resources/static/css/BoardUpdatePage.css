@@ -1,8 +1,8 @@
-.create_board_title_textarea{
-    resize: none;
+.create_board_title_textarea {
+  resize: none;
 }
 
 .create_board_content_textarea {
-    min-height: 15rem !important;
-    resize: none;
-  }
+  min-height: 15rem !important;
+  resize: none;
+}
