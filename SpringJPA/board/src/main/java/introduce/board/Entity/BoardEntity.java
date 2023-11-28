@@ -27,6 +27,7 @@ public class BoardEntity {
     private String content; //글 내용
 
     @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime createAt; //작성일
 
     @LastModifiedDate
