@@ -1,13 +1,11 @@
 package introduce.board.DTO;
 
-import introduce.board.Entity.BoardEntity;
 import introduce.board.Entity.ReplyEntity;
-import lombok.*;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 public class ReplyDTO {
 
     private Long id;
@@ -15,19 +13,20 @@ public class ReplyDTO {
     private LocalDateTime replyCreateAt;
     private Long boardId;
 
-    public static ReplyDTO replyForms(ReplyEntity replyEntity) {
-        ReplyDTO replyForm = new ReplyDTO();
-        replyForm.setId(replyEntity.getReplyId());
-        replyForm.setReplyContent(replyEntity.getReplyContent());
-        replyForm.setReplyCreateAt(replyEntity.getReplyCreateAt());
-        replyForm.setBoardId(replyEntity.getBoardEntity().getId());
-        return replyForm;
+    public static ReplyDTO fromEntity(ReplyEntity replyEntity) {
+        return new ReplyDTO(
+                replyEntity.getReplyId(),
+                replyEntity.getReplyContent(),
+                replyEntity.getReplyCreateAt(),
+                replyEntity.getBoardEntity().getId()
+        );
     }
 
-    public ReplyEntity toEntity() {
-        ReplyEntity replyEntity = new ReplyEntity();
-        replyEntity.setReplyId(this.id);
-        replyEntity.setReplyContent(this.replyContent);
-        return replyEntity;
+    // 생성자를 이용하여 필수 필드 초기화
+    public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, Long boardId) {
+        this.id = id;
+        this.replyContent = replyContent;
+        this.replyCreateAt = replyCreateAt;
+        this.boardId = boardId;
     }
 }

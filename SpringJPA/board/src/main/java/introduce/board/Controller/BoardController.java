@@ -2,8 +2,6 @@ package introduce.board.Controller;
 
 import introduce.board.DTO.BoardDTO;
 import introduce.board.DTO.ReplyDTO;
-import introduce.board.Entity.BoardEntity;
-import introduce.board.Entity.ReplyEntity;
 import introduce.board.Service.BoardService;
 import introduce.board.Service.ReplyService;
 import lombok.RequiredArgsConstructor;
@@ -41,22 +39,16 @@ public class BoardController {
 
     @PostMapping("/board/write")
     public String PostBoardWritePage(@Valid BoardDTO boardForm) {
-        BoardEntity savedBoardEntity = boardService.saveBoard(boardForm.toEntity());
-        boardForm.setCreateAt(savedBoardEntity.getCreateAt());
-        boardForm.setFixAt(savedBoardEntity.getFixAt());
+        boardService.saveBoard(boardForm);
         return "redirect:/board";
     }
-
-
-
 
     //각 번호 게시글
     @Transactional
     @GetMapping("/board/{id}")
     public String GetBoard(@PathVariable("id") Long id, Model model) {
-        Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-        BoardDTO boardForm = BoardDTO.boardForms(boardOptional.get());
-        model.addAttribute("boardForm", boardForm);
+        Optional<BoardDTO> boardOptional = boardService.getBoard(id);
+        model.addAttribute("boardForm", boardOptional.get());
 
         List<ReplyDTO> replyForms = replyService.getRepliesByBoardId(id);
         model.addAttribute("replyForms", replyForms);
@@ -64,34 +56,26 @@ public class BoardController {
         return "BoardIdPage";
     }
 
-
     @Transactional
     @PostMapping("/board/{id}")
     public String PostBoard(@PathVariable("id") Long id, @ModelAttribute("boardForm") BoardDTO boardForm) {
-        Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-        BoardEntity boardEntity = boardOptional.get();
-        boardEntity.setTitle(boardForm.getTitle());
-        boardEntity.setContent(boardForm.getContent());
-        boardService.saveBoard(boardEntity);
+        boardService.saveBoard(boardForm);
         return "redirect:/board/" + id;
     }
-
 
     //게시글 수정
     @GetMapping("/board/{id}/update")
     public String GetUpdateBoard(@PathVariable("id") Long id, Model model) {
-        Optional<BoardEntity> boardOptional = boardService.getBoard(id);
-        BoardDTO boardForm = BoardDTO.boardForms(boardOptional.get());
-        model.addAttribute("boardForm", boardForm);
+        Optional<BoardDTO> boardOptional = boardService.getBoard(id);
+        model.addAttribute("boardForm", boardOptional.get());
         return "BoardUpdatePage";
     }
 
-
     @PostMapping("/board/{id}/update")
-    public String PostUpdateBoard() {
+    public String PostUpdateBoard(@ModelAttribute("boardForm") BoardDTO boardForm) {
+        boardService.saveBoard(boardForm);
         return "redirect:/board/{id}";
     }
-
 
     //게시글 삭제
     @GetMapping("/board/{id}/delete")
@@ -103,7 +87,7 @@ public class BoardController {
     //게시글 리스트 화면
     @GetMapping("/board")
     public String GetBoardPage(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String option, String keyword, Model model) {
-        Page<BoardEntity> list = null;
+        Page<BoardDTO> list = null;
         if (keyword == null) {
             list = boardService.findBoards(pageable);
         } else {
@@ -127,7 +111,4 @@ public class BoardController {
         replyService.saveReply(boardId, replyForm);
         return "redirect:/board/" + boardId;
     }
-
-
-
 }

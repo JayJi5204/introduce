@@ -1,16 +1,14 @@
 package introduce.board.Service;
 
 
+import introduce.board.DTO.BoardDTO;
 import introduce.board.Entity.BoardEntity;
 import introduce.board.Repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,30 +17,38 @@ public class BoardService {
     private BoardRepository boardRepository;
 
 
-    public BoardEntity saveBoard(BoardEntity boardEntity) {
-        return boardRepository.save(boardEntity);
+    // Entity를 DTO로 변환해서 저장
+    public BoardDTO saveBoard(BoardDTO boardDTO) {
+        BoardEntity boardEntity = boardDTO.toEntity();
+        boardRepository.save(boardEntity);
+        return boardDTO;
     }
-
 
     public void deleteBoard(Long id) {
         boardRepository.deleteById(id);
     }
 
-
-    public Optional<BoardEntity> getBoard(Long id) {
-        return boardRepository.findById(id);
+    // Entity를 DTO로 변환해서 반환
+    public Optional<BoardDTO> getBoard(Long id) {
+        Optional<BoardEntity> boardEntity = boardRepository.findById(id);
+        return boardEntity.map(BoardDTO::boardForms);
     }
 
-    public Page<BoardEntity> findBoards(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    // Page<BoardEntity>를 Page<BoardDTO>로 변환해서 반환
+    public Page<BoardDTO> findBoards(Pageable pageable) {
+        Page<BoardEntity> boardEntities = boardRepository.findAll(pageable);
+        return boardEntities.map(BoardDTO::boardForms);
     }
 
-    public Page<BoardEntity> searchBoards(String option, String keyword, Pageable pageable) {
+    // Page<BoardEntity>를 Page<BoardDTO>로 변환해서 반환
+    public Page<BoardDTO> searchBoards(String option, String keyword, Pageable pageable) {
+        Page<BoardEntity> boardEntities;
         if ("title".equals(option)) {
-            return boardRepository.findByTitleContaining(keyword,pageable);
+            boardEntities = boardRepository.findByTitleContaining(keyword, pageable);
         } else {
-            return boardRepository.findByContentContaining(keyword,pageable);
+            boardEntities = boardRepository.findByContentContaining(keyword, pageable);
         }
+        return boardEntities.map(BoardDTO::boardForms);
     }
 
 

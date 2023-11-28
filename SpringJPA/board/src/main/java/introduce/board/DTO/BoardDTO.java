@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+
 public class BoardDTO {
     private Long id;
     private String Title;
