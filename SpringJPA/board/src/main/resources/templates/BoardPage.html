@@ -6,7 +6,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       rel="stylesheet"
     />
-    <link rel="stylesheet" th:href="@{/css/Header.css}" />
+    <link rel="stylesheet" th:href="@{/css/BoardSetting.css}" />
     <link rel="stylesheet" th:href="@{/css/BoardPage.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/javascript/SideBar.js}"></script>
@@ -70,26 +70,30 @@
               </a>
             </div>
           </div>
+
           <div class="text-center mt-2">
-            <ul class="d-flex justify-content-center">
-              <li
-                class="ms-1"
-                th:each="page: ${#numbers.sequence(startPage, endPage)}"
-                th:if="${page != 0}"
-              >
-                <a
-                  th:if="${page != nowPage}"
-                  th:href="@{/board(page=${page}-1)}"
-                  th:text="${page}"
-                ></a>
-                <strong
-                  th:if="${page == nowPage}"
-                  th:text="${page}"
-                  style="color: red"
-                ></strong>
-              </li>
-            </ul>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" th:if="${startPage > 0}" th:href="@{/board(page=${nowPage - 2})}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <!-- Add pagination items dynamically using Thymeleaf -->
+                <li th:each="pageItem: ${#numbers.sequence(startPage, endPage+1)}" th:if="${pageItem != 0}" class="page-item">
+                  <a th:href="@{/board(page=${pageItem-1})}" class="page-link" th:text="${pageItem}"></a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" th:if="${endPage < totalPages && nowPage < totalPages}" th:href="@{/board(page=${nowPage})}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                  <a class="page-link" th:unless="${endPage < totalPages && nowPage < totalPages}" ><span aria-hidden="true">&raquo;</span></a>
+                </li>
+              </ul>
+            </nav>
           </div>
+
+
         </div>
       </div>
     </div>

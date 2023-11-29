@@ -86,25 +86,31 @@ public class BoardController {
 
     //게시글 리스트 화면
     @GetMapping("/board")
-    public String GetBoardPage(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String option, String keyword, Model model) {
-        Page<BoardDTO> list = null;
+    public String getBoardPage(
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+            String option, String keyword, Model model
+    ) {
+        Page<BoardDTO> list;
+
         if (keyword == null) {
             list = boardService.findBoards(pageable);
         } else {
             list = boardService.searchBoards(option, keyword, pageable);
         }
 
-        int nowPage = list.getPageable().getPageNumber() + 1;
+        int nowPage = list.getNumber() + 1;
         int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 9, list.getTotalPages());
+        int endPage = Math.min(nowPage + 9, list.getTotalPages())-1;
 
         model.addAttribute("search", list);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+        model.addAttribute("totalPages", list.getTotalPages());
 
         return "BoardPage";
     }
+
 
     @PostMapping("/board/{boardId}/reply")
     public String createReply(@PathVariable("boardId") Long boardId, ReplyDTO replyForm) {

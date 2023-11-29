@@ -14,7 +14,11 @@ import java.util.Optional;
 @Service
 public class BoardService {
     @Autowired
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
+
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
 
 
     // Entity를 DTO로 변환해서 저장
