@@ -21,6 +21,9 @@ li {
 #center {
   align-items: center;
 }
+#cursor{
+  cursor: pointer;
+}
 .sidebar_setting {
   display: flex;
 }

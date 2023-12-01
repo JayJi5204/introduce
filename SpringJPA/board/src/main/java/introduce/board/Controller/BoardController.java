@@ -5,7 +5,6 @@ import introduce.board.DTO.ReplyDTO;
 import introduce.board.Service.BoardService;
 import introduce.board.Service.ReplyService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,11 +23,37 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class BoardController {
 
     private final BoardService boardService;
     private final ReplyService replyService;
+
+    //게시글 리스트 화면
+    @GetMapping("/board")
+    public String getBoardPage(
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+            String option, String keyword, Model model
+    ) {
+        Page<BoardDTO> list;
+
+        if (keyword == null) {
+            list = boardService.findBoards(pageable);
+        } else {
+            list = boardService.searchBoards(option, keyword, pageable);
+        }
+
+        int nowPage = list.getNumber() + 1;
+        int startPage = Math.max(nowPage - 4, 1);
+        int endPage = Math.min(nowPage + 9, list.getTotalPages())-1;
+
+        model.addAttribute("search", list);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("totalPages", list.getTotalPages());
+
+        return "BoardPage";
+    }
 
     //게시글 작성
     @GetMapping("/board/write")
@@ -84,32 +109,7 @@ public class BoardController {
         return "redirect:/board";
     }
 
-    //게시글 리스트 화면
-    @GetMapping("/board")
-    public String getBoardPage(
-            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-            String option, String keyword, Model model
-    ) {
-        Page<BoardDTO> list;
 
-        if (keyword == null) {
-            list = boardService.findBoards(pageable);
-        } else {
-            list = boardService.searchBoards(option, keyword, pageable);
-        }
-
-        int nowPage = list.getNumber() + 1;
-        int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 9, list.getTotalPages())-1;
-
-        model.addAttribute("search", list);
-        model.addAttribute("nowPage", nowPage);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("endPage", endPage);
-        model.addAttribute("totalPages", list.getTotalPages());
-
-        return "BoardPage";
-    }
 
 
     @PostMapping("/board/{boardId}/reply")

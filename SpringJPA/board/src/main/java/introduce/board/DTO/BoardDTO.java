@@ -16,16 +16,7 @@ public class BoardDTO {
     private String Content;
     private LocalDateTime createAt;
     private LocalDateTime fixAt;
-
-    public static BoardDTO boardForms(BoardEntity boardEntity) {
-        BoardDTO boardForm = new BoardDTO();
-        boardForm.setId(boardEntity.getId());
-        boardForm.setTitle(boardEntity.getTitle());
-        boardForm.setContent(boardEntity.getContent());
-        boardForm.setCreateAt(boardEntity.getCreateAt());
-        boardForm.setFixAt(boardEntity.getFixAt());
-        return boardForm;
-    }
+    private String name;
 
     public BoardEntity toEntity() {
         BoardEntity boardEntity = new BoardEntity();
@@ -36,6 +27,18 @@ public class BoardDTO {
         boardEntity.setFixAt(this.fixAt);
         return boardEntity;
     }
+
+    public static BoardDTO fromBoardEntity(BoardEntity boardEntity) {
+        BoardDTO boardForm = new BoardDTO();
+        boardForm.setId(boardEntity.getId());
+        boardForm.setTitle(boardEntity.getTitle());
+        boardForm.setContent(boardEntity.getContent());
+        boardForm.setCreateAt(boardEntity.getCreateAt());
+        boardForm.setFixAt(boardEntity.getFixAt());
+        return boardForm;
+    }
+
+
 }
 
 

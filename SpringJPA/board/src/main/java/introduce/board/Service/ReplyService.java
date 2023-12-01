@@ -23,7 +23,7 @@ public class ReplyService {
                 replyDTO.getReplyContent(),
                 replyDTO.getReplyCreateAt(),
                 boardService.getBoard(boardId)
-                        .orElseThrow(() -> new IllegalArgumentException("Invalid boardId")).toEntity()
+                        .orElseThrow(() -> new IllegalArgumentException("오류발생")).toEntity()
         );
         replyRepository.save(replyEntity);
     }
@@ -32,7 +32,7 @@ public class ReplyService {
     public List<ReplyDTO> getRepliesByBoardId(Long boardId) {
         List<ReplyEntity> replyEntities = replyRepository.findByBoardEntity_Id(boardId);
         return replyEntities.stream()
-                .map(ReplyDTO::fromEntity)
+                .map(ReplyDTO::fromReplyEntity)
                 .collect(Collectors.toList());
     }
 }

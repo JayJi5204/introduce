@@ -22,10 +22,9 @@ public class BoardService {
 
 
     // Entity를 DTO로 변환해서 저장
-    public BoardDTO saveBoard(BoardDTO boardDTO) {
+    public void saveBoard(BoardDTO boardDTO) {
         BoardEntity boardEntity = boardDTO.toEntity();
         boardRepository.save(boardEntity);
-        return boardDTO;
     }
 
     public void deleteBoard(Long id) {
@@ -35,13 +34,13 @@ public class BoardService {
     // Entity를 DTO로 변환해서 반환
     public Optional<BoardDTO> getBoard(Long id) {
         Optional<BoardEntity> boardEntity = boardRepository.findById(id);
-        return boardEntity.map(BoardDTO::boardForms);
+        return boardEntity.map(BoardDTO::fromBoardEntity);
     }
 
     // Page<BoardEntity>를 Page<BoardDTO>로 변환해서 반환
     public Page<BoardDTO> findBoards(Pageable pageable) {
         Page<BoardEntity> boardEntities = boardRepository.findAll(pageable);
-        return boardEntities.map(BoardDTO::boardForms);
+        return boardEntities.map(BoardDTO::fromBoardEntity);
     }
 
     // Page<BoardEntity>를 Page<BoardDTO>로 변환해서 반환
@@ -52,7 +51,7 @@ public class BoardService {
         } else {
             boardEntities = boardRepository.findByContentContaining(keyword, pageable);
         }
-        return boardEntities.map(BoardDTO::boardForms);
+        return boardEntities.map(BoardDTO::fromBoardEntity);
     }
 
 

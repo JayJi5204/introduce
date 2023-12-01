@@ -20,7 +20,7 @@
         <div class="col-lg-9 mt-1 container-fluid">
           <div class="ms-4 mt-4 container">
             <form
-              action="/board/write"
+              th:action="@{/board/write}"
               method="post"
               role="form"
               th:object="${boardForm}"

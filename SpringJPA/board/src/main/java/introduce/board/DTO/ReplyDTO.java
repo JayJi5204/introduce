@@ -13,7 +13,15 @@ public class ReplyDTO {
     private LocalDateTime replyCreateAt;
     private Long boardId;
 
-    public static ReplyDTO fromEntity(ReplyEntity replyEntity) {
+    // 생성자를 이용하여 필수 필드 초기화
+    public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, Long boardId) {
+        this.id = id;
+        this.replyContent = replyContent;
+        this.replyCreateAt = replyCreateAt;
+        this.boardId = boardId;
+    }
+
+    public static ReplyDTO fromReplyEntity(ReplyEntity replyEntity) {
         return new ReplyDTO(
                 replyEntity.getReplyId(),
                 replyEntity.getReplyContent(),
@@ -22,11 +30,5 @@ public class ReplyDTO {
         );
     }
 
-    // 생성자를 이용하여 필수 필드 초기화
-    public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, Long boardId) {
-        this.id = id;
-        this.replyContent = replyContent;
-        this.replyCreateAt = replyCreateAt;
-        this.boardId = boardId;
-    }
+
 }
