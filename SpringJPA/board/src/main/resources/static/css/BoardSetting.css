@@ -15,7 +15,7 @@ li {
 #Navbar {
   border: solid 1px black;
 }
-#sidePic {
+.sidePic {
   border-top: solid 1px rgb(199, 196, 196);
 }
 #center {
@@ -37,7 +37,7 @@ li {
 .toggleBack {
   height:200px;
   top: 74px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   transition: transform 0.3s;
 }

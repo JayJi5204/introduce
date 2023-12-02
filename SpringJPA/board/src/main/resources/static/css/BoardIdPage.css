@@ -13,8 +13,14 @@
   resize: none;
   white-space: pre-line;
   word-break: break-all;
+  width:38rem;
+
 }
 
 .reply_button {
   text-align: left;
+}
+
+.replyBorder{
+border: solid 1px rgb(209, 207, 207);
 }

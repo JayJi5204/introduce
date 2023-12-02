@@ -21,6 +21,7 @@ public class ReplyDTO {
         this.boardId = boardId;
     }
 
+    //DTO를 Entity로 변환
     public static ReplyDTO fromReplyEntity(ReplyEntity replyEntity) {
         return new ReplyDTO(
                 replyEntity.getReplyId(),

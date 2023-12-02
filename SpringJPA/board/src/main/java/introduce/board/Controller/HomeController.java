@@ -20,10 +20,11 @@ public class HomeController {
 
     private final GuestBookService guestBookService;
 
+    //메인페이지
     @GetMapping("/")
-    public String getHomePage(Pageable pageable, Model model, Long id, String name, String guestContent, LocalDateTime guestTime) {
+    public String getHomePage(Pageable pageable, Model model, Long id, String name, String guestContent, LocalDateTime guestCreatAt) {
         Page<GuestBookDTO> guestBookPage = guestBookService.getGuestBook(pageable);
-        model.addAttribute("guestBookDTO", new GuestBookDTO(id,name,guestContent,guestTime));
+        model.addAttribute("guestBookDTO", new GuestBookDTO(id,name,guestContent,guestCreatAt));
         model.addAttribute("guestBookPage", guestBookPage);
         return "HomePage";
     }
@@ -34,11 +35,13 @@ public class HomeController {
         return "redirect:/";
     }
 
+    //정보페이지
     @RequestMapping("/inform")
     public String informPage() {
         return "Informpage";
     }
 
+    //자기소개서 페이지
     @RequestMapping("/intro")
     public String introPage() {
         return "Intropage";

@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ReplyRepository extends JpaRepository<ReplyEntity,Long> {
 
-
+    //게시판 글 번호 조회로 댓글 리스트화
     List<ReplyEntity> findByBoardEntity_Id(Long boardId);
 }

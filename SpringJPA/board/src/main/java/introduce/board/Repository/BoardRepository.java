@@ -12,7 +12,9 @@ import java.util.List;
 @Repository
 public interface BoardRepository extends JpaRepository<BoardEntity,Long> {
 
+   //글 제목으로 검색
    Page<BoardEntity> findByTitleContaining(String keyword,Pageable pageable);
+   //글 내용으로 검색
    Page<BoardEntity> findByContentContaining(String keyword,Pageable pageable);
 
 

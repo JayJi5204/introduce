@@ -18,6 +18,7 @@ public class BoardDTO {
     private LocalDateTime fixAt;
     private String name;
 
+    // 생성자를 이용하여 필수 필드 초기화
     public BoardEntity toEntity() {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setId(this.id);
@@ -28,6 +29,7 @@ public class BoardDTO {
         return boardEntity;
     }
 
+    //DTO를 Entity로 변환
     public static BoardDTO fromBoardEntity(BoardEntity boardEntity) {
         BoardDTO boardForm = new BoardDTO();
         boardForm.setId(boardEntity.getId());

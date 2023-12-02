@@ -36,10 +36,10 @@ public class BoardController {
     ) {
         Page<BoardDTO> list;
 
-        if (keyword == null) {
-            list = boardService.findBoards(pageable);
+        if (keyword == null) {  //검색한 결과가 없으면
+            list = boardService.findBoards(pageable);   //게시글 전체 보여주기
         } else {
-            list = boardService.searchBoards(option, keyword, pageable);
+            list = boardService.searchBoards(option, keyword, pageable);    //검색 결과 보여주기
         }
 
         int nowPage = list.getNumber() + 1;

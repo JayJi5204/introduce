@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 public class ReplyEntity {
 
     @Id
@@ -30,7 +32,7 @@ public class ReplyEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BoardEntity_Id")
-    private BoardEntity boardEntity;
+    private BoardEntity boardEntity;    //게시판 N:1 관계 설정
 
     // 생성자를 이용하여 필수 필드 초기화
     public ReplyEntity(String replyContent, LocalDateTime replyCreateAt, BoardEntity boardEntity) {

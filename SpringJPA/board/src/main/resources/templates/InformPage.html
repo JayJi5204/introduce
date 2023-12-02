@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="ko">
   <head>
     <link
       crossorigin="anonymous"
@@ -16,11 +16,11 @@
       <div th:replace="fragments/Header :: Header" />
       <div class="sidebar_setting ms-4">
         <div th:replace="fragments/Sidebar :: Sidebar" />
+        <!--메인 내용-->
         <div class="col-lg-9 mt-4 container-fluid borderSetting">
-          <!--메인 내용-->
           <h5>학력사항</h5>
           <div class="border_1 test3">
-            <table class="table test3" id="text_center">
+            <table class="table test3 text_center">
               <thead class="test3">
                 <tr class="test3">
                   <th class="test3">기 간</th>
@@ -48,7 +48,7 @@
           <div class="mt-4">
             <h5>교육 이수내역</h5>
             <div class="border_1">
-              <table class="table" id="text_center">
+              <table class="table text_center">
                 <thead>
                   <tr>
                     <th scope="col">기 간</th>
@@ -70,9 +70,55 @@
             </div>
           </div>
           <div class="mt-4">
+            <h5>경력사항</h5>
+            <div class="border_1"><table class="table text_center">
+              <thead>
+              <tr>
+                <th scope="col">기 간</th>
+                <th scope="col">회 사 명</th>
+                <th scope="col">담 당 업 무</th>
+              </tr>
+              </thead>
+              <tbody class="table-group-divider">
+              <tr>
+                <td>2021년 08월 ~ 2021년 10월</td>
+                <td>서울 게임 아카데미</td>
+                <td>학생 관리 및 상담, 코치 관리, 학부모 상담</td>
+              </tr>
+              </tbody>
+            </table></div> </div>
+          <div class="mt-4">
+            <h5>자격사항</h5>
+            <div class="border_1"><table class="table text_center">
+              <thead>
+              <tr>
+                <th scope="col">취 득 일</th>
+                <th scope="col">자 격 증 명</th>
+                <th scope="col">발 급 기 관</th>
+              </tr>
+              </thead>
+              <tbody class="table-group-divider">
+              <tr>
+                <td>2022년 10월 28일</td>
+                <td>컴퓨터활용능력 2급</td>
+                <td>대한상공회의소</td>
+              </tr>
+              <tr>
+                <td>2022년 05월</td>
+                <td>新HSK 5급</td>
+                <td>중국국가한반</td>
+              </tr>
+              <tr>
+                <td>2021년 12월</td>
+                <td>2종 보통운전면허</td>
+                <td>경찰정(운전면허시험관리단)</td>
+              </tr>
+              </tbody>
+            </table></div> </div>
+          <div class="mt-4">
             <h5>교육 이수내역</h5>
             <div class="border_1">
-              <table class="table" id="text_center">
+              <table class="table text_center">
                 <thead>
                   <tr>
                     <th scope="col">프 로 그 램</th>

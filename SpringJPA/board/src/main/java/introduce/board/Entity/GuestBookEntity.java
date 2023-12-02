@@ -29,11 +29,12 @@ public class GuestBookEntity {
     private String guestContent;    //방명록 내용
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime guestTime;    //방문 시간
+    private LocalDateTime guestCreateAt;    //방문 시간
 
     @OneToMany(mappedBy = "guestBookEntity",cascade = CascadeType.ALL)
-    private List<BoardEntity> boardEntityList=new ArrayList<>();
+    private List<BoardEntity> boardEntityList=new ArrayList<>();    //게시판 1:N 관계 설정
 
+    // 생성자를 이용하여 필수 필드 초기화
     public GuestBookEntity(String name,String guestContent){
         this.name=name;
         this.guestContent=guestContent;
