@@ -13,14 +13,24 @@
   resize: none;
   white-space: pre-line;
   word-break: break-all;
-  width:38rem;
-
+  width: 45rem;
 }
 
 .reply_button {
   text-align: left;
 }
 
-.replyBorder{
-border: solid 1px rgb(209, 207, 207);
+.replyBorder {
+  border: solid 1px rgb(209, 207, 207);
+  border-radius: 5px;
+  display: flex;
+}
+.reply_Form {
+  width: 42rem;
+}
+
+.replyContent_Form {
+  resize: none;
+  white-space: pre-line;
+  word-break: break-all;
 }

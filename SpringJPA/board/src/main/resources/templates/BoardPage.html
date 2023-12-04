@@ -85,7 +85,6 @@
                   </a>
                   <a class="page-link" th:unless="${startPage > 0}" ><span aria-hidden="true">&raquo;</span></a>
                 </li>
-                <!-- Add pagination items dynamically using Thymeleaf -->
                 <li th:each="pageItem: ${#numbers.sequence(startPage, endPage+1)}" th:if="${pageItem != 0}" class="page-item">
                   <a th:href="@{/board(page=${pageItem-1})}" class="page-link" th:text="${pageItem}"></a>
                 </li>

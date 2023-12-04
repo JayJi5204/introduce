@@ -12,6 +12,9 @@ public class ReplyDTO {
     private String replyContent;
     private LocalDateTime replyCreateAt;
     private Long boardId;
+    protected ReplyDTO(){
+
+    }
 
     // 생성자를 이용하여 필수 필드 초기화
     public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, Long boardId) {

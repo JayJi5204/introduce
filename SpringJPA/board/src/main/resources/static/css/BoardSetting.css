@@ -21,7 +21,7 @@ li {
 #center {
   align-items: center;
 }
-#cursor{
+#cursor {
   cursor: pointer;
 }
 .sidebar_setting {
@@ -35,7 +35,7 @@ li {
   z-index: 2;
 }
 .toggleBack {
-  height:200px;
+  height: 200px;
   top: 74px;
   position: absolute;
   z-index: 1;
@@ -43,5 +43,49 @@ li {
 }
 .toggleButton {
   position: absolute;
-  left:500px
+  left: 500px;
+}
+.borderRadius {
+  border-radius: 5px;
+}
+.guestContent {
+  resize: none;
+  white-space: pre-line;
+  word-break: break-all;
+  height: 10rem;
+  width: 38rem;
+  border-radius: 5px;
+}
+.guestFormSetting {
+  width: 30rem;
+}
+.guestSetting {
+  border: solid 1px rgb(199, 196, 196);
+  border-radius: 5px;
+  width: 40rem;
+  padding: 1rem;
+}
+.guestName {
+  width: 38rem;
+  border-radius: 5px;
+}
+.guestBookSetting {
+  border: solid 1px rgb(199, 196, 196);
+  width: 30rem;
+}
+.center {
+  justify-content: center;
+}
+.guestContentBorder {
+  border-left: solid 1px rgb(199, 196, 196);
+  border-bottom: solid 1px rgb(199, 196, 196);
+  border-right: solid 1px rgb(199, 196, 196);
+  background-color: rgb(241, 238, 238);
+}
+.guestContentForm {
+  resize: none;
+  white-space: pre-line;
+  word-break: break-all;
+  display: flex;
+  align-items: center;
 }

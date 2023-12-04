@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/BoardIdPage.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/javascript/SideBar.js}"></script>
-    <title>게시글</title>
+    <title>게시글 상세</title>
 </head>
 <body>
 <div class="container">
@@ -19,16 +19,16 @@
 
                 <div class="card">
                     <form method="post" th:action="@{/board/{id}/update(id=${boardForm.id})}" th:object="${boardForm}">
-                        <h5 class="card-header"><a th:text="${boardForm.title}">제목</a></h5>
+                        <h5 class="card-header"><a class="ms-3" th:text="${boardForm.title}">제목</a></h5>
                         <div class="card-body">
-                            <p class="card-text board_content"><a th:text="${boardForm.content}">내용</a></p>
+                            <p class="card-text board_content"><a class="ms-3" th:text="${boardForm.content}">내용</a></p>
                         </div>
                         <div class="body">
                             <li class="ms-4 mt-2">
-                                <p> 작성일 : <a
+                                <p class="ms-3"> 작성일 : <a
                                         th:text="${#temporals.format(boardForm?.createAt, 'YYYY-MM-dd HH:mm')}">작성일</a>
                                 </p>
-                                <p> 수정일 : <a
+                                <p class="ms-3"> 수정일 : <a
                                         th:text="${#temporals.format(boardForm?.fixAt, 'YYYY-MM-dd HH:mm')}">수정일</a>
                                 </p>
                             </li>
@@ -49,8 +49,8 @@
                     <div class="body">
                         <form th:each="replyForms : ${replyForms}">
                             <li class="ms-5 mt-2 me-5 replyBorder">
-                                <p><a class="reply_textarea" th:text="${replyForms.replyContent}">내용</a></p>
-                                <p><a class="reply_textarea"  th:text="${#temporals.format(replyForms?.replyCreateAt, 'YYYY-MM-dd HH:mm')}">내용</a></p>
+                                <p class="reply_Form ms-2 mt-2"><a class="replyContent_Form " th:text="${replyForms.replyContent}">내용</a></p>
+                                <p class="mt-2"><a class="d-flex justify-content-end"  th:text="${#temporals.format(replyForms?.replyCreateAt, 'YYYY-MM-dd HH:mm')}">내용</a></p>
                             </li>
                         </form>
                     </div>
