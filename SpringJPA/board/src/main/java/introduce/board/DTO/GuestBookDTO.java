@@ -1,7 +1,6 @@
 package introduce.board.DTO;
 
 import introduce.board.Entity.GuestBookEntity;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -27,7 +26,7 @@ public class GuestBookDTO {
     }
 
     //DTO를 Entity로 변환
-    public static GuestBookDTO fromGuestBook(GuestBookEntity guestBookEntity) {
+    public static GuestBookDTO toGuestBook(GuestBookEntity guestBookEntity) {
         return new GuestBookDTO(
                 guestBookEntity.getId(),
                 guestBookEntity.getName(),

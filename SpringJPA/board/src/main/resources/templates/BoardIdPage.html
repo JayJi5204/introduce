@@ -15,8 +15,6 @@
         <div th:replace="fragments/Sidebar :: Sidebar"/>
         <div class="col-lg-9 mt-1  container-fluid">
             <div class="ms-4 mt-4  container">
-
-
                 <div class="card">
                     <form method="post" th:action="@{/board/{id}/update(id=${boardForm.id})}" th:object="${boardForm}">
                         <h5 class="card-header"><a class="ms-3" th:text="${boardForm.title}">제목</a></h5>
@@ -35,13 +33,13 @@
                         </div>
                     </form>
                     <form method="post" th:action="@{/board/{id}/reply(id=${boardForm.id})}" th:object="${boardForm}">
-                        <ul class="list-group list-group-flush ">
-                            <li class="list-group-item d-flex justify-content-center">
+                        <ul>
+                            <li class="d-flex justify-content-center">
                                 <label>
                                     <textarea class="form-control  reply_textarea"
                                      name="replyContent" placeholder="댓글을 입력해주세요"></textarea>
                                 </label>
-                                <button class="btn btn-primary reply_button" th:text="댓글작성" type="submit">댓글작성</button>
+                                <button class="btn btn-primary reply_button ms-2" th:text="댓글작성" type="submit">댓글작성</button>
                             </li>
                         </ul>
                     </form>

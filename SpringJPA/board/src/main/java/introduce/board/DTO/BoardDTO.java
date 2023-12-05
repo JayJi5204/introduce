@@ -30,7 +30,7 @@ public class BoardDTO {
     }
 
     //DTO를 Entity로 변환
-    public static BoardDTO fromBoardEntity(BoardEntity boardEntity) {
+    public static BoardDTO toBoardEntity(BoardEntity boardEntity) {
         BoardDTO boardForm = new BoardDTO();
         boardForm.setId(boardEntity.getId());
         boardForm.setTitle(boardEntity.getTitle());
