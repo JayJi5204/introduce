@@ -11,7 +11,7 @@
 - Java 17
 - Oracle 11g
 
-- **초기화**
+ **초기화**
    $ git clone https://github.com/JayJi5204/introduce.git
    $ cd introduce
 
