@@ -26,7 +26,7 @@ public class GuestBookDTO {
     }
 
     //DTO를 Entity로 변환
-    public static GuestBookDTO toGuestBook(GuestBookEntity guestBookEntity) {
+    public static GuestBookDTO toGuestBookDTO(GuestBookEntity guestBookEntity) {
         return new GuestBookDTO(
                 guestBookEntity.getId(),
                 guestBookEntity.getName(),

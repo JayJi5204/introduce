@@ -27,7 +27,7 @@ public class GuestBookService {
     @Transactional
     public Page<GuestBookDTO> getGuestBook(Pageable pageable) {
         Page<GuestBookEntity> guestBookEntityPage=guestBookRepository.findAll(pageable);
-        return guestBookEntityPage.map(GuestBookDTO::toGuestBook);
+        return guestBookEntityPage.map(GuestBookDTO::toGuestBookDTO);
     }
 
 

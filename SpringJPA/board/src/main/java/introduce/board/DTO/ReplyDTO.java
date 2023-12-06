@@ -25,7 +25,7 @@ public class ReplyDTO {
     }
 
     //DTO를 Entity로 변환
-    public static ReplyDTO toReplyEntity(ReplyEntity replyEntity) {
+    public static ReplyDTO toReplyDTO(ReplyEntity replyEntity) {
         return new ReplyDTO(
                 replyEntity.getReplyId(),
                 replyEntity.getReplyContent(),

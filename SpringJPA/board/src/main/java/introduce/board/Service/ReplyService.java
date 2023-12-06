@@ -32,7 +32,7 @@ public class ReplyService {
     public List<ReplyDTO> getRepliesByBoardId(Long boardId) {
         List<ReplyEntity> replyEntities = replyRepository.findByBoardEntity_Id(boardId);
         return replyEntities.stream()
-                .map(ReplyDTO::toReplyEntity)
+                .map(ReplyDTO::toReplyDTO)
                 .collect(Collectors.toList());
     }
 }

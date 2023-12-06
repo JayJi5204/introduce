@@ -36,7 +36,4 @@ public class BoardEntity {
     @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL)
     private List<ReplyEntity> replyEntities=new ArrayList<>();  //댓글 1:N 관계 설정
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "GuestBookEntity_Id")
-    private GuestBookEntity guestBookEntity;    //방명록 N:1 관계 설정
 }

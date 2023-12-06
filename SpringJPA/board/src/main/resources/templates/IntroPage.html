@@ -7,212 +7,217 @@
           rel="stylesheet"
   />
   <link rel="stylesheet" th:href="@{/css/BoardSetting.css}" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script th:src="@{/javascript/SideBar.js}"></script>
   <title>소개</title>
 </head>
-  <body>
-    <div class="container">
-      <div th:replace="fragments/Header :: Header" />
-      <div class="sidebar_setting ms-4">
-        <div th:replace="fragments/Sidebar :: Sidebar" />
-        <div class="col-lg-9 mt-4 container-fluid">
-          <!--메인 내용-->
-          <div>
-            <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button
-                    aria-controls="collapseOne"
-                    aria-expanded="true"
-                    class="accordion-button introHeadSetting"
-                    data-bs-target="#collapseOne"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 코딩과의 첫 만남</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingOne"
-                  class="accordion-collapse collapse show introHeadSetting"
-                  data-bs-parent="#accordionExample"
-                  id="collapseOne"
-                >
-                  <div class="accordion-body introBodySetting">
-                    대학생 때 게임 학원에 인턴 생활을 해보았습니다. 그곳에는
-                    게임을 가르쳐주는 강사도 있지만 게임 프로그램 개발 강사도
-                    있었습니다. 학원에 있는 강사들과 교류를 하다 보니 개발자라는
-                    길을 저에게 적극 추천해 주었습니다. 이미 개발이 무엇인지
-                    저는 체험을 해보았기 때문에 거부감이 없었고 개발자에 대해서
-                    흥미를 가지게 되었습니다. 집에 돌아온 뒤 혼자서 코딩 공부를
-                    해보았습니다. 공부를 하다 보니 이전에는 이해가 가지 않았던
-                    것이 이해되었습니다. 그때부터 코딩을 해보고 싶은 생각이
-                    들었고 개발자를 목표로 하게 되었습니다.
-                  </div>
-                </div>
+<script
+        crossorigin="anonymous"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/javascript/SideBar.js}"></script>
+<body>
+<div class="container">
+  <div th:replace="fragments/Header :: Header" />
+  <div class="sidebar_setting ms-4">
+    <div th:replace="fragments/Sidebar :: Sidebar" />
+    <div class="col-lg-9 mt-4 container-fluid">
+      <!--메인 내용-->
+      <div>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                      aria-controls="collapseOne"
+                      aria-expanded="true"
+                      class="accordion-button introHeadSetting"
+                      data-bs-target="#collapseOne"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 코딩과의 첫 만남</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingOne"
+                    class="accordion-collapse collapse show introHeadSetting"
+                    data-bs-parent="#accordionExample"
+                    id="collapseOne"
+            >
+              <div class="accordion-body introBodySetting">
+                대학생 때 게임 학원에 인턴 생활을 해보았습니다. 그곳에는
+                게임을 가르쳐주는 강사도 있지만 게임 프로그램 개발 강사도
+                있었습니다. 학원에 있는 강사들과 교류를 하다 보니 개발자라는
+                길을 저에게 적극 추천해 주었습니다. 이미 개발이 무엇인지
+                저는 체험을 해보았기 때문에 거부감이 없었고 개발자에 대해서
+                흥미를 가지게 되었습니다. 집에 돌아온 뒤 혼자서 코딩 공부를
+                해보았습니다. 공부를 하다 보니 이전에는 이해가 가지 않았던
+                것이 이해되었습니다. 그때부터 코딩을 해보고 싶은 생각이
+                들었고 개발자를 목표로 하게 되었습니다.
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button
-                    aria-controls="collapseTwo"
-                    aria-expanded="false"
-                    class="accordion-button collapsed"
-                    data-bs-target="#collapseTwo"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 슬기로운 전과 생활</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingTwo"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                  id="collapseTwo"
-                >
-                  <div class="accordion-body introBodySetting">
-                    대학교 3학년 때 중국학과로 전과를 하게 되었습니다. 남들보다
-                    2년 늦게 시작을 하니 수업을 따라가는데 어려움이 있었습니다.
-                    그래서 저는 졸업할 때 중국어 자격증을 취득하자는 목표를
-                    가지고 공부를 시작하였습니다. 무작정 공부하는 것이 아닌 중국
-                    노래나 드라마를 보며 듣기 실력을 키웠고, 드라마에 있는
-                    중국어 자막을 보며 읽기 실력을 키웠습니다. 또한 중국
-                    친구들과 만나서 이야기를 하거나 전화를 하면서 저의 말하기
-                    실력을 키웠습니다. 결국 저는 장학금과 4점 대 성적을 유지하며
-                    졸업을 할 수 있게 되었습니다. 목표 의식을 가지며 작업을 하는
-                    것이 제가 성공적인 전과 생활을 할 수 있었다고 생각합니다
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                      aria-controls="collapseTwo"
+                      aria-expanded="false"
+                      class="accordion-button collapsed"
+                      data-bs-target="#collapseTwo"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 슬기로운 전과 생활</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingTwo"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                    id="collapseTwo"
+            >
+              <div class="accordion-body introBodySetting">
+                대학교 3학년 때 중국학과로 전과를 하게 되었습니다. 남들보다
+                2년 늦게 시작을 하니 수업을 따라가는데 어려움이 있었습니다.
+                그래서 저는 졸업할 때 중국어 자격증을 취득하자는 목표를
+                가지고 공부를 시작하였습니다. 무작정 공부하는 것이 아닌 중국
+                노래나 드라마를 보며 듣기 실력을 키웠고, 드라마에 있는
+                중국어 자막을 보며 읽기 실력을 키웠습니다. 또한 중국
+                친구들과 만나서 이야기를 하거나 전화를 하면서 저의 말하기
+                실력을 키웠습니다. 결국 저는 장학금과 4점 대 성적을 유지하며
+                졸업을 할 수 있게 되었습니다. 목표 의식을 가지며 작업을 하는
+                것이 제가 성공적인 전과 생활을 할 수 있었다고 생각합니다
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button
-                    aria-controls="collapseThree"
-                    aria-expanded="false"
-                    class="accordion-button collapsed"
-                    data-bs-target="#collapseThree"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 올해를 돌아보며</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingThree"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                  id="collapseThree"
-                >
-                  <div class="accordion-body introBodySetting">미완성</div>
-                </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                      aria-controls="collapseThree"
+                      aria-expanded="false"
+                      class="accordion-button collapsed"
+                      data-bs-target="#collapseThree"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 올해를 돌아보며</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingThree"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                    id="collapseThree"
+            >
+              <div class="accordion-body introBodySetting">미완성</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                      aria-controls="collapseThree"
+                      aria-expanded="false"
+                      class="accordion-button collapsed"
+                      data-bs-target="#collapseFour"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 나 혼자 산다</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingFour"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                    id="collapseFour"
+            >
+              <div class="accordion-body introBodySetting">
+                저는 대학 생활 때 중국으로 반년 간 교환 학생을 갔었습니다.
+                가족이나 친구 없이 외국으로 가는 것은 처음이었습니다.
+                한국에서 하는 수업 방식과 중국에서 수업 방식이 달라 따라가기
+                어려웠습니다. 특히 밥을 주문하기 어려워서 항상 편의점에서
+                먹었습니다. 이런 생활이 반복되면 얻어가는 것이 없다고
+                생각해서 매일 단어를 외우는 습관을 만들기 시작했습니다.
+                처음에는 많은 단어를 외우기 어려웠지만 일주일 뒤에는 적응이
+                되어 많은 단어를 외울 수 있게 되었습니다. 많은 단어를 외우게
+                된 덕분에 자신감을 가지고 소통을 할 수 있게 되었고, 성실하게
+                노력하면 바뀌게 된다는 것을 깨닫게 해주는 교환 학생
+                생활이었습니다.
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFour">
-                  <button
-                    aria-controls="collapseThree"
-                    aria-expanded="false"
-                    class="accordion-button collapsed"
-                    data-bs-target="#collapseFour"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 나 혼자 산다</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingFour"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                  id="collapseFour"
-                >
-                  <div class="accordion-body introBodySetting">
-                    저는 대학 생활 때 중국으로 반년 간 교환 학생을 갔었습니다.
-                    가족이나 친구 없이 외국으로 가는 것은 처음이었습니다.
-                    한국에서 하는 수업 방식과 중국에서 수업 방식이 달라 따라가기
-                    어려웠습니다. 특히 밥을 주문하기 어려워서 항상 편의점에서
-                    먹었습니다. 이런 생활이 반복되면 얻어가는 것이 없다고
-                    생각해서 매일 단어를 외우는 습관을 만들기 시작했습니다.
-                    처음에는 많은 단어를 외우기 어려웠지만 일주일 뒤에는 적응이
-                    되어 많은 단어를 외울 수 있게 되었습니다. 많은 단어를 외우게
-                    된 덕분에 자신감을 가지고 소통을 할 수 있게 되었고, 성실하게
-                    노력하면 바뀌게 된다는 것을 깨닫게 해주는 교환 학생
-                    생활이었습니다.
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button
+                      aria-controls="collapseThree"
+                      aria-expanded="false"
+                      class="accordion-button collapsed"
+                      data-bs-target="#collapseFive"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 28년의 나</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingFive"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                    id="collapseFive"
+            >
+              <div class="accordion-body introBodySetting">
+                저의 장점은 여러 사람들과 잘 어울린다는 것입니다. 성격이
+                사람들을 만나면서 에너지를 얻는 성격이기 때문에 집단이나
+                단체 행사 등에 참여하고 있습니다. 축구 모임의 운영진을 할
+                때, 신입 분들이 모임에 적응하는데 힘들어하는 것을
+                보았습니다. 그래서 휴식 시간에 물이나 음료수를 드리며
+                이야기를 나누며 혼자 있게 두지 않았습니다. 경기가 끝난
+                후에는 회식 자리를 열어서 같이 식사를 할 수 있는 자리를
+                만듭니다. 밥을 먹을 때, 제 옆자리에 앉게 하고 신입 분들과
+                이야기를 하면서 신입 분들이 모임에 적응을 할 수 있도록
+                도와주었습니다. 저의 단점은 긴장을 많이 합니다. 발표를 하는
+                자리에서 실수가 나오곤 합니다. 그래서 저는 항상 실수를 하지
+                않게 미리 대본을 작성하고 그 대본을 다 외우도록 하고
+                있습니다. 또한 발표 전에 리허설을 통해 제 목소리가 잘
+                들리는지, 말할 때 어떤 행동을 해야 하는지 피드백을 통해 본
+                발표 때 성공적으로 발표를 마칠 수 있게 됩니다.
               </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFive">
-                  <button
-                    aria-controls="collapseThree"
-                    aria-expanded="false"
-                    class="accordion-button collapsed"
-                    data-bs-target="#collapseFive"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 28년의 나</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingFive"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                  id="collapseFive"
-                >
-                  <div class="accordion-body introBodySetting">
-                    저의 장점은 여러 사람들과 잘 어울린다는 것입니다. 성격이
-                    사람들을 만나면서 에너지를 얻는 성격이기 때문에 집단이나
-                    단체 행사 등에 참여하고 있습니다. 축구 모임의 운영진을 할
-                    때, 신입 분들이 모임에 적응하는데 힘들어하는 것을
-                    보았습니다. 그래서 휴식 시간에 물이나 음료수를 드리며
-                    이야기를 나누며 혼자 있게 두지 않았습니다. 경기가 끝난
-                    후에는 회식 자리를 열어서 같이 식사를 할 수 있는 자리를
-                    만듭니다. 밥을 먹을 때, 제 옆자리에 앉게 하고 신입 분들과
-                    이야기를 하면서 신입 분들이 모임에 적응을 할 수 있도록
-                    도와주었습니다. 저의 단점은 긴장을 많이 합니다. 발표를 하는
-                    자리에서 실수가 나오곤 합니다. 그래서 저는 항상 실수를 하지
-                    않게 미리 대본을 작성하고 그 대본을 다 외우도록 하고
-                    있습니다. 또한 발표 전에 리허설을 통해 제 목소리가 잘
-                    들리는지, 말할 때 어떤 행동을 해야 하는지 피드백을 통해 본
-                    발표 때 성공적으로 발표를 마칠 수 있게 됩니다.
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingSix">
-                  <button
-                    aria-controls="collapseThree"
-                    aria-expanded="false"
-                    class="accordion-button collapsed"
-                    data-bs-target="#collapseSix"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <strong> 제가 생각하는 개발자란?</strong>
-                  </button>
-                </h2>
-                <div
-                  aria-labelledby="headingSix"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                  id="collapseSix"
-                >
-                  <div class="accordion-body introBodySetting">
-                    제가 생각하는 개발자는 항상 배우는 사람이라고 생각합니다.
-                    프로그램이라는 것은 계속해서 발전해 가고 있고 항상 새로운
-                    것이 나타나며, 기존에 있던 것들은 뒤쳐지게 되고 있다고
-                    생각합니다. 그렇기에 저는 한 부분만 파는 개발자가 아니라
-                    넓은 시야를 가지고 다양한 방향으로 갈 수 있는 개발자가
-                    되려고 합니다. 마지막으로 이 회사에서 오랜 기간 동안
-                    여러분들과 일하고 싶고, 배우고 싶습니다.
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button
+                      aria-controls="collapseThree"
+                      aria-expanded="false"
+                      class="accordion-button collapsed"
+                      data-bs-target="#collapseSix"
+                      data-bs-toggle="collapse"
+                      type="button"
+              >
+                <strong> 제가 생각하는 개발자란?</strong>
+              </button>
+            </h2>
+            <div
+                    aria-labelledby="headingSix"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                    id="collapseSix"
+            >
+              <div class="accordion-body introBodySetting">
+                제가 생각하는 개발자는 항상 배우는 사람이라고 생각합니다.
+                프로그램이라는 것은 계속해서 발전해 가고 있고 항상 새로운
+                것이 나타나며, 기존에 있던 것들은 뒤쳐지게 되고 있다고
+                생각합니다. 그렇기에 저는 한 부분만 파는 개발자가 아니라
+                넓은 시야를 가지고 다양한 방향으로 갈 수 있는 개발자가
+                되려고 합니다. 마지막으로 이 회사에서 오랜 기간 동안
+                여러분들과 일하고 싶고, 배우고 싶습니다.
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>

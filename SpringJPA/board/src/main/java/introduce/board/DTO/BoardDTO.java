@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 
 public class BoardDTO {
     private Long id;
-    private String Title;
-    private String Content;
+    private String title;
+    private String content;
     private LocalDateTime createAt;
     private LocalDateTime fixAt;
     private String name;
@@ -22,8 +22,8 @@ public class BoardDTO {
     public BoardEntity toEntity() {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setId(this.id);
-        boardEntity.setTitle(this.Title);
-        boardEntity.setContent(this.Content);
+        boardEntity.setTitle(this.title);
+        boardEntity.setContent(this.content);
         boardEntity.setCreateAt(this.createAt);
         boardEntity.setFixAt(this.fixAt);
         return boardEntity;
