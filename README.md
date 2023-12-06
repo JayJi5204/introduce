@@ -57,3 +57,8 @@
 
 - Tools
   - GitHub
+
+## 기획
+
+- **ERD**
+![image](https://github.com/JayJi5204/introduce/assets/126458483/5ea7ec33-5768-4324-9c98-14563be6c191)
