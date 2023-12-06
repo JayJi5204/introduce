@@ -4,6 +4,8 @@ import introduce.board.DTO.BoardDTO;
 import introduce.board.DTO.ReplyDTO;
 import introduce.board.Service.BoardService;
 import introduce.board.Service.ReplyService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,8 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
