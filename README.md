@@ -60,5 +60,10 @@
 
 ## 기획
 
+- **아키텍처**   
+![image](https://github.com/JayJi5204/introduce/assets/126458483/49713935-8371-434e-85be-cdb67c4fc147)
 - **ERD**
 ![image](https://github.com/JayJi5204/introduce/assets/126458483/5ea7ec33-5768-4324-9c98-14563be6c191)
+
+
+
