@@ -15,10 +15,10 @@ import java.util.List;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "board_table")
 public class BoardEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Board_Id")
-    @SequenceGenerator(name = "Board_Id", allocationSize = 1)
+    @GeneratedValue
     @Column(name = "BoardEntity_Id")
     private Long id;    //글 번호
 

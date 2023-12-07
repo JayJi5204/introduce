@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "reply_table")
 public class ReplyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Reply_Id")
-    @SequenceGenerator(name = "Reply_Id", allocationSize = 1)
+    @GeneratedValue
     @Column(name = "ReplyEntity_Id")
     private Long replyId;    // 댓글 번호
 
