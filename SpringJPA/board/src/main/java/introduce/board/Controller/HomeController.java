@@ -21,7 +21,6 @@ public class HomeController {
 
     private final GuestBookService guestBookService;
 
-
     //메인페이지
     @GetMapping("/")
     public String getHomePage(Model model, Long id, String name, String guestContent, LocalDateTime guestCreateAt) {
@@ -44,13 +43,13 @@ public class HomeController {
     //정보페이지
     @RequestMapping("/inform")
     public String informPage() {
-        return "InformPage";
+        return "Informpage";
     }
 
     //자기소개서 페이지
     @RequestMapping("/intro")
     public String introPage() {
-        return "IntroPage";
+        return "Intropage";
     }
     @GetMapping("/guestbook")
     public String guestPage(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, Model model) {

@@ -18,9 +18,9 @@
 <script th:src="@{/javascript/SideBar.js}"></script>
 <body>
 <div class="container">
-  <div th:replace="~{fragments/Header :: Header}"></div>
+  <div th:replace="fragments/Header :: Header" />
   <div class="sidebar_setting ms-4">
-    <div th:replace="~{fragments/SideBar :: SideBar}"></div>
+    <div th:replace="fragments/Sidebar :: Sidebar" />
     <div class="col-lg-9 mt-4 container-fluid">
       <!--메인 내용-->
       <div>
@@ -95,7 +95,7 @@
               <button
                       aria-controls="collapseThree"
                       aria-expanded="false"
-                      class="accordion-button collapsed disable"
+                      class="accordion-button collapsed"
                       data-bs-target="#collapseThree"
                       data-bs-toggle="collapse"
                       type="button"

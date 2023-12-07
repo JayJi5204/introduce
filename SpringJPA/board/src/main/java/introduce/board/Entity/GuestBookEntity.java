@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "guest_table")
 public class GuestBookEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Guest_Id")
+    @SequenceGenerator(name = "Guest_Id",allocationSize = 1)
     @Column(name = "GuestBookEntity_Id")
     private Long id;    //방명록 번호
 
