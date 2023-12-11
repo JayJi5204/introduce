@@ -6,7 +6,7 @@
 지성현에 대해서 소개하는 사이트
 
 ## 설치 가이드
-- Eclipse EE (STS 4)  
+- IntelliJ 
 - Spring Boot 3.x
 - Java 17
 - Oracle 11g
@@ -26,11 +26,11 @@
    -> 'conn/as sysdba' 입력   
    -> 'create user jayji identified by 1234;' 입력   
    -> 'grant connect, resource, dba to jayji;' 입력   
-2. Eclipse 실행   
+2. IntelliJ 실행   
 3. 프로젝트 Import   
-   [File] -> [import] -> [Existring Gradle Project] -> 'SpringJPA/board' 폴더 선택   
+   [File] -> [Open] -> '/introduce/SpringJPA/board' 폴더 선택 -> 'build.gradle' 선택 -> 'Open as Project' 선택
 4. 실행
-   [Run] -> [Run as] -> [Spring Boot App]
+   src/main/java/introduce.board/BoardApplication 실행행
 
    ## 주요 기능
 
@@ -42,7 +42,7 @@
 ## 기술 스택
 
 - Backend
-  - JAVA 17
+  - Java 17
   - Spring Boot 3.1.6 (JPA)
   - gradle
     
