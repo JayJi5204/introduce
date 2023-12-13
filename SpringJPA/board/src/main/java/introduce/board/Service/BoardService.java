@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,9 +24,10 @@ public class BoardService {
 
 
     // Entity를 DTO로 변환해서 저장
-    public void saveBoard(BoardDTO boardDTO) {
+    public Long saveBoard(BoardDTO boardDTO) {
         BoardEntity boardEntity = boardDTO.toEntity();
-        boardRepository.save(boardEntity);
+        BoardEntity savedEntity = boardRepository.save(boardEntity);
+        return savedEntity.getId();
     }
 
     public void deleteBoard(Long id) {
@@ -54,6 +57,19 @@ public class BoardService {
         return boardEntities.map(BoardDTO::toBoardEntity);
     }
 
+    //API 설계를 위한 Service
+    public Optional<BoardEntity> findOne(Long id) {
+        return boardRepository.findById(id);
+    }
 
+    @Transactional
+    public void apiUpdate(Long id, String title) {
+        BoardEntity boardEntity = boardRepository.findById(id).get();
+        boardEntity.setTitle(title);
+    }
+
+    public List<BoardEntity> findBoard() {
+        return boardRepository.findAll();
+    }
 }
 
