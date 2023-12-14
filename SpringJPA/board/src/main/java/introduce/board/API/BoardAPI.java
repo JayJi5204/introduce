@@ -21,7 +21,7 @@ public class BoardAPI {
 
     private final BoardService boardService;
 
-    //게시판 제목, 게시글 API
+    //게시판 제목, 게시글 작성 API
     @PostMapping("/api/board")
     public CreateBoardResponse saveBoard(@RequestBody @Valid CreateBoardRequest request) {
         BoardDTO boardDTO = new BoardDTO();
@@ -29,21 +29,6 @@ public class BoardAPI {
         boardDTO.setContent(request.getContent());
         Long id = boardService.saveBoard(boardDTO);
         return new CreateBoardResponse(id);
-    }
-
-    @Data
-    static class CreateBoardResponse {
-        private Long id;
-        public CreateBoardResponse(Long id) {
-            this.id = id;
-        }
-    }
-
-    @Data
-    static class CreateBoardRequest {
-        @NotEmpty
-        private String title;
-        private String content;
     }
 
     //게시글 수정 API
@@ -54,6 +39,30 @@ public class BoardAPI {
         BoardEntity getBoardEntity = boardEntity.get();
         return new UpdateBoardResponse(getBoardEntity.getId(), getBoardEntity.getTitle());
 
+    }
+
+    //게시판 조회 API
+    @GetMapping("/api/board")
+    public Result<List<BoardDto>> board() {
+        List<BoardEntity> findBoards = boardService.findBoard();
+        List<BoardDto> collect = findBoards.stream().map(m -> new BoardDto(m.getTitle())).collect(Collectors.toList());
+        return new Result<>(collect);
+    }
+
+    @Data
+    static class CreateBoardResponse {
+        private Long id;
+
+        public CreateBoardResponse(Long id) {
+            this.id = id;
+        }
+    }
+
+    @Data
+    static class CreateBoardRequest {
+        @NotEmpty
+        private String title;
+        private String content;
     }
 
     @Data
@@ -67,14 +76,6 @@ public class BoardAPI {
     static class UpdateBoardRequest {
         @NotEmpty
         private String title;
-    }
-
-    //게시판 조회 API
-    @GetMapping("/api/board")
-    public Result<List<BoardDto>> board() {
-        List<BoardEntity> findBoards = boardService.findBoard();
-        List<BoardDto> collect = findBoards.stream().map(m -> new BoardDto(m.getTitle())).collect(Collectors.toList());
-        return new Result<>(collect);
     }
 
     @Data
