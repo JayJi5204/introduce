@@ -17,7 +17,6 @@ public class ReplyService {
     private final ReplyRepository replyRepository;
     private final BoardService boardService;
 
-    @Transactional
     public void saveReply(Long boardId, ReplyDTO replyDTO) {
         ReplyEntity replyEntity = new ReplyEntity(
                 replyDTO.getReplyContent(),
@@ -28,7 +27,14 @@ public class ReplyService {
         replyRepository.save(replyEntity);
     }
 
-    @Transactional(readOnly = true)
+    public Long saveReply2(ReplyDTO replyDTO){
+
+
+
+        return null;
+    }
+
+
     public List<ReplyDTO> getRepliesByBoardId(Long boardId) {
         List<ReplyEntity> replyEntities = replyRepository.findByBoardEntity_Id(boardId);
         return replyEntities.stream()

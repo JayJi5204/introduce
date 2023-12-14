@@ -22,7 +22,7 @@ public class HomeController {
     private final GuestBookService guestBookService;
 
     //메인페이지
-    @GetMapping("/")
+    @GetMapping("/t")
     public String getHomePage(Model model, Long id, String name, String guestContent, LocalDateTime guestCreateAt) {
         model.addAttribute("guestBookDTO", new GuestBookDTO(id,name,guestContent,guestCreateAt));
         return "HomePage";
@@ -30,13 +30,19 @@ public class HomeController {
 
     // 수정된 코드: HomeController.java
 
-    @PostMapping("/")
+    @PostMapping("/t")
     public String postHomePage(@ModelAttribute @Valid GuestBookDTO guestBookDTO, Model model) {
         guestBookService.saveGuestBook(guestBookDTO);
         // 방명록이 작성되면 최근 방명록 작성자의 이름을 모델에 추가
         model.addAttribute("guestName", guestBookDTO.getName());
 
         return "redirect:/";
+    }
+    @GetMapping("/guestbook")
+    public String guestPage(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, Model model) {
+        Page<GuestBookDTO> guestBookPage = guestBookService.getGuestBook(pageable);
+        model.addAttribute("guestBookPage", guestBookPage);
+        return "GuestPage";
     }
 
 
@@ -51,10 +57,5 @@ public class HomeController {
     public String introPage() {
         return "Intropage";
     }
-    @GetMapping("/guestbook")
-    public String guestPage(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, Model model) {
-        Page<GuestBookDTO> guestBookPage = guestBookService.getGuestBook(pageable);
-        model.addAttribute("guestBookPage", guestBookPage);
-        return "GuestPage";
-    }
+
 }

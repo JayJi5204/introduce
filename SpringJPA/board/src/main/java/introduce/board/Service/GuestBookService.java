@@ -15,7 +15,6 @@ public class GuestBookService {
 
     private final GuestBookRepository guestBookRepository;
 
-    @Transactional
     public void saveGuestBook(GuestBookDTO guestBookDTO) {
         GuestBookEntity guestBookEntity = new GuestBookEntity(
                 guestBookDTO.getName(),
@@ -24,10 +23,20 @@ public class GuestBookService {
         guestBookRepository.save(guestBookEntity);
     }
 
-    @Transactional
+
     public Page<GuestBookDTO> getGuestBook(Pageable pageable) {
         Page<GuestBookEntity> guestBookEntityPage=guestBookRepository.findAll(pageable);
         return guestBookEntityPage.map(GuestBookDTO::toGuestBookDTO);
+    }
+
+    //API 설계를 위한 Service
+    public Long saveGuest(GuestBookDTO guestBookDTO){
+        GuestBookEntity guestBookEntity=new GuestBookEntity(
+                guestBookDTO.getName(),
+                guestBookDTO.getGuestContent()
+        );
+        guestBookRepository.save(guestBookEntity);
+        return guestBookEntity.getId();
     }
 
 

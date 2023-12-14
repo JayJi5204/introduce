@@ -9,14 +9,12 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-
 public class BoardDTO {
     private Long id;
     private String title;
     private String content;
     private LocalDateTime createAt;
     private LocalDateTime fixAt;
-    private String name;
 
     // 생성자를 이용하여 필수 필드 초기화
     public BoardEntity toEntity() {

@@ -70,7 +70,6 @@ public class BoardController {
     }
 
     //각 번호 게시글
-    @Transactional
     @GetMapping("/board/{id}")
     public String GetBoard(@PathVariable("id") Long id, Model model) {
         Optional<BoardDTO> boardOptional = boardService.getBoard(id);

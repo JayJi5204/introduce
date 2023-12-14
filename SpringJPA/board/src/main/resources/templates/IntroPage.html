@@ -18,9 +18,9 @@
 <script th:src="@{/javascript/SideBar.js}"></script>
 <body>
 <div class="container">
-  <div th:replace="fragments/Header :: Header" />
+  <div th:replace="~{fragments/Header :: Header}"></div>
   <div class="sidebar_setting ms-4">
-    <div th:replace="fragments/Sidebar :: Sidebar" />
+    <div th:replace="~{fragments/SideBar :: SideBar}"></div>
     <div class="col-lg-9 mt-4 container-fluid">
       <!--메인 내용-->
       <div>

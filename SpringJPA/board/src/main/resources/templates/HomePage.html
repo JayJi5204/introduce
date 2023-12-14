@@ -18,16 +18,16 @@
 
   <body>
     <div class="container">
-      <div th:replace="fragments/Header :: Header"></div>
+      <div th:replace="~{fragments/Header :: Header}"></div>
       <div class="sidebar_setting ms-4">
-        <div  th:replace="fragments/Sidebar :: Sidebar"></div>
+        <div th:replace="~{fragments/SideBar :: SideBar}"></div>
         <div class="col-lg-9 mt-4 container-fluid">
           <!--메인 내용-->
           <div class=" d-flex justify-content-center mt-2">
             <form
               class="guestSetting"
               method="post"
-              th:action="@{/}"
+              th:action="@{/t}"
               th:object="${guestBookDTO}"
             >
               <h2 class="d-flex justify-content-center">

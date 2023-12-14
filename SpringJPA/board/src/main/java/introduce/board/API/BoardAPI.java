@@ -31,12 +31,9 @@ public class BoardAPI {
         return new CreateBoardResponse(id);
     }
 
-
-
     @Data
     static class CreateBoardResponse {
         private Long id;
-
         public CreateBoardResponse(Long id) {
             this.id = id;
         }
