@@ -20,12 +20,4 @@ public class GuestBookDTO {
         this.guestCreateAt = guestTime;
     }
 
-    public static GuestBookDTO toGuestBookDTO(GuestBookEntity guestBookEntity) {
-        return new GuestBookDTO(
-                guestBookEntity.getId(),
-                guestBookEntity.getName(),
-                guestBookEntity.getGuestContent(),
-                guestBookEntity.getGuestCreateAt()
-        );
-    }
 }

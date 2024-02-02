@@ -26,16 +26,6 @@ public class BoardDTO {
         this.replyEntity=replyEntity;
     }
 
-    public static BoardDTO toBoard(BoardEntity boardEntity) {
-        return new BoardDTO(
-                boardEntity.getBoardId(),
-                boardEntity.getTitle(),
-                boardEntity.getContent(),
-                boardEntity.getCreateAt(),
-                boardEntity.getFixAt(),
-                boardEntity.getReplyEntities()
-        );
-    }
 
 
 }

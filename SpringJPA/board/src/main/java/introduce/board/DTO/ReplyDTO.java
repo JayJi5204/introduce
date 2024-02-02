@@ -21,15 +21,4 @@ public class ReplyDTO {
         this.boardEntity = boardEntity;
     }
 
-
-    public static ReplyDTO toReplyDTO(ReplyEntity replyEntity) {
-        return new ReplyDTO(
-                replyEntity.getReplyId(),
-                replyEntity.getReplyContent(),
-                replyEntity.getReplyCreateAt(),
-                replyEntity.getBoardEntity()
-        );
-    }
-
-
 }
