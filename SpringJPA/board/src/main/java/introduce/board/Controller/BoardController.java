@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -73,13 +74,10 @@ public class BoardController {
 
     //각 번호 게시글
     @GetMapping("/board/{boardId}")
-    public String GetBoard(@PathVariable("boardId") Long boardId, Model model, BoardDTO boardDTO) {
-        List<BoardEntity> boardEntities = boardService.getBoard();
+    public String GetBoard(@PathVariable("boardId") Long boardId, Model model) {
+        BoardEntity boardEntities = boardService.getBoard(boardId).orElseThrow();
         model.addAttribute("boardForm", boardEntities);
-
-        Long id = boardDTO.getBoardId();
-        model.addAttribute("Id", id);
-
+        model.addAttribute("Id", boardId);
         List<ReplyEntity> replyForms = replyService.getRepliesByBoardId(boardId);
         model.addAttribute("replyForms", replyForms);
 
@@ -95,17 +93,17 @@ public class BoardController {
     //게시글 수정
     @GetMapping("/board/{boardId}/update")
     public String GetUpdateBoard(@PathVariable("boardId") Long boardId, Model model, BoardDTO boardDTO) {
-        Long id = boardDTO.getBoardId();
-        model.addAttribute("Id", id);
-        List<BoardEntity> boardEntities = boardService.getBoard();
+        model.addAttribute("Id", boardId);
+        BoardEntity boardEntities = boardService.getBoard(boardId).orElseThrow();
         model.addAttribute("boardForm", boardEntities);
         return "BoardUpdatePage";
     }
 
     @PostMapping("/board/{boardId}/update")
-    public String PostUpdateBoard(@ModelAttribute("boardDTO") BoardDTO boardDTO) {
+    public String PostUpdateBoard(@PathVariable("boardId") Long boardId,@ModelAttribute("boardDTO") BoardDTO boardDTO,Model model) {
+        model.addAttribute("Id", boardId);
         boardService.saveBoard(boardDTO);
-        return "redirect:/board/{boarId}";
+        return "redirect:/board/{boardId}";
     }
 
     //게시글 삭제

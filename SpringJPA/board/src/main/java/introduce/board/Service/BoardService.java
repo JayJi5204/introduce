@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +39,8 @@ public class BoardService {
         boardRepository.deleteById(boardId);
     }
 
-    public List<BoardEntity> getBoard() {
-        return boardRepository.findAll();
+    public Optional<BoardEntity> getBoard(Long boardId) {
+        return boardRepository.findById(boardId);
     }
 
     public Page<BoardEntity> findBoards(Pageable pageable) {
