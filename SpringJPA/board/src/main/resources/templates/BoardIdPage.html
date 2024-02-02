@@ -16,7 +16,7 @@
         <div class="col-lg-9 mt-1  container-fluid">
             <div class="ms-4 mt-4  container">
                 <div class="card">
-                    <form method="post" th:action="@{/board/{id}/update(id=${boardForm.id})}" th:object="${boardForm}">
+                    <form th:each="boardForm : ${boardForm}">
                         <h5 class="card-header"><a class="ms-3" th:text="${boardForm.title}">제목</a></h5>
                         <div class="card-body">
                             <p class="card-text board_content"><a class="ms-3" th:text="${boardForm.content}">내용</a></p>
@@ -32,17 +32,17 @@
                             </li>
                         </div>
                     </form>
-                    <form method="post" th:action="@{/board/{id}/reply(id=${boardForm.id})}" th:object="${boardForm}">
-                        <ul>
-                            <li class="d-flex justify-content-center">
-                                <label>
-                                    <textarea class="form-control  reply_textarea"
-                                     name="replyContent" placeholder="댓글을 입력해주세요"></textarea>
-                                </label>
-                                <button class="btn btn-primary reply_button ms-2" th:text="댓글작성" type="submit">댓글작성</button>
-                            </li>
-                        </ul>
-                    </form>
+                        <form method="post" th:action="@{'/board/'+${Id}+'/reply'}" th:object="${boardForm}">
+                            <ul>
+                                <li class="d-flex justify-content-center">
+                                    <label>
+                                        <textarea class="form-control  reply_textarea"
+                                         name="replyContent" placeholder="댓글을 입력해주세요"></textarea>
+                                    </label>
+                                    <button class="btn btn-primary reply_button ms-2" th:text="댓글작성" type="submit">댓글작성</button>
+                                </li>
+                            </ul>
+                        </form>
 
                     <div class="body">
                         <form th:each="replyForms : ${replyForms}">
@@ -57,10 +57,10 @@
 
                 <div class="d-flex justify-content-end mt-3">
                     <button class="btn btn-primary me-1"><a
-                            th:href="@{/board/{id}/update(id=${boardForm.id})}">수정</a>
+                            th:href="@{'/board/'+${Id}+'/update'}">수정</a>
                     </button>
                     <button class="btn btn-danger me-1"><a
-                            th:href="@{/board/{id}/delete(id=${boardForm.id})}">삭제</a>
+                            th:href="@{'/board/'+${Id}+'/delete'}">삭제</a>
                     </button>
                     <button class="btn btn-warning"><a th:href="@{/board}">글 목록</a></button>
                 </div>

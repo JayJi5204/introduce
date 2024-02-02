@@ -2,40 +2,39 @@ package introduce.board.DTO;
 
 
 import introduce.board.Entity.BoardEntity;
+import introduce.board.Entity.ReplyEntity;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
-@Setter
 public class BoardDTO {
-    private Long id;
+    private Long boardId;
     private String title;
     private String content;
     private LocalDateTime createAt;
     private LocalDateTime fixAt;
+    private List<ReplyEntity> replyEntity;
 
-    // 생성자를 이용하여 필수 필드 초기화
-    public BoardEntity toEntity() {
-        BoardEntity boardEntity = new BoardEntity();
-        boardEntity.setId(this.id);
-        boardEntity.setTitle(this.title);
-        boardEntity.setContent(this.content);
-        boardEntity.setCreateAt(this.createAt);
-        boardEntity.setFixAt(this.fixAt);
-        return boardEntity;
+    public BoardDTO(Long boardId, String title, String content, LocalDateTime createAt, LocalDateTime fixAt,List<ReplyEntity> replyEntity) {
+        this.boardId = boardId;
+        this.title = title;
+        this.content = content;
+        this.createAt = createAt;
+        this.fixAt = fixAt;
+        this.replyEntity=replyEntity;
     }
 
-    //DTO를 Entity로 변환
-    public static BoardDTO toBoardEntity(BoardEntity boardEntity) {
-        BoardDTO boardForm = new BoardDTO();
-        boardForm.setId(boardEntity.getId());
-        boardForm.setTitle(boardEntity.getTitle());
-        boardForm.setContent(boardEntity.getContent());
-        boardForm.setCreateAt(boardEntity.getCreateAt());
-        boardForm.setFixAt(boardEntity.getFixAt());
-        return boardForm;
+    public static BoardDTO toBoard(BoardEntity boardEntity) {
+        return new BoardDTO(
+                boardEntity.getBoardId(),
+                boardEntity.getTitle(),
+                boardEntity.getContent(),
+                boardEntity.getCreateAt(),
+                boardEntity.getFixAt(),
+                boardEntity.getReplyEntities()
+        );
     }
 
 

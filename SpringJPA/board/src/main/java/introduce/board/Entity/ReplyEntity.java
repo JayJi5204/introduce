@@ -2,17 +2,19 @@
 package introduce.board.Entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 public class ReplyEntity {
 
@@ -29,17 +31,7 @@ public class ReplyEntity {
     private LocalDateTime replyCreateAt; // 작성일
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BoardEntity_Id")
+    @JoinColumn(name = "boardId")
     private BoardEntity boardEntity;    //게시판 N:1 관계 설정
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BoardEntity2_Id")
-    private BoardEntity2 boardEntity2;    //게시판 N:1 관계 설정
-
-    // 생성자를 이용하여 필수 필드 초기화
-    public ReplyEntity(String replyContent, LocalDateTime replyCreateAt, BoardEntity boardEntity) {
-        this.replyContent = replyContent;
-        this.replyCreateAt = replyCreateAt;
-        this.boardEntity = boardEntity;
-    }
 }

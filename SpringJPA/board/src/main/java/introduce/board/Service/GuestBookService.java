@@ -22,9 +22,9 @@ public class GuestBookService {
     }
 
 
-    public Page<GuestBookDTO> getGuestBook(Pageable pageable) {
-        Page<GuestBookEntity> guestBookEntityPage = guestBookRepository.findAll(pageable);
-        return guestBookEntityPage.map(GuestBookDTO::toGuestBookDTO);
+    public Page<GuestBookEntity> getGuestBook(Pageable pageable) {
+        return guestBookRepository.findAll(pageable);
+
     }
 
     //API 설계를 위한 Service

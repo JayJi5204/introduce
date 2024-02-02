@@ -1,44 +1,35 @@
 package introduce.board.Service;
 
 import introduce.board.DTO.ReplyDTO;
+import introduce.board.Entity.BoardEntity;
 import introduce.board.Entity.ReplyEntity;
+import introduce.board.Repository.BoardRepository;
 import introduce.board.Repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ReplyService {
 
     private final ReplyRepository replyRepository;
-    private final BoardService boardService;
+    private final BoardRepository boardRepository;
 
-    public void saveReply(Long boardId, ReplyDTO replyDTO) {
+    public void saveReply(ReplyDTO replyDTO, Long boardId) {
+        BoardEntity boardEntity = boardRepository.findById(boardId).orElseThrow();
         ReplyEntity replyEntity = new ReplyEntity(
+                replyDTO.getId(),
                 replyDTO.getReplyContent(),
                 replyDTO.getReplyCreateAt(),
-                boardService.getBoard(boardId)
-                        .orElseThrow(() -> new IllegalArgumentException("오류발생")).toEntity()
+                boardEntity
         );
         replyRepository.save(replyEntity);
     }
 
-    public Long saveReply2(ReplyDTO replyDTO){
 
-
-
-        return null;
-    }
-
-
-    public List<ReplyDTO> getRepliesByBoardId(Long boardId) {
-        List<ReplyEntity> replyEntities = replyRepository.findByBoardEntity_Id(boardId);
-        return replyEntities.stream()
-                .map(ReplyDTO::toReplyDTO)
-                .collect(Collectors.toList());
+    public List<ReplyEntity> getRepliesByBoardId(Long boardId) {
+        return replyRepository.findByBoardEntity_BoardId(boardId);
     }
 }

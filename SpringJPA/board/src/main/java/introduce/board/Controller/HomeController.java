@@ -1,6 +1,7 @@
 package introduce.board.Controller;
 
 import introduce.board.DTO.GuestBookDTO;
+import introduce.board.Entity.GuestBookEntity;
 import introduce.board.Service.GuestBookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.time.LocalDateTime;
 
 @Controller
@@ -24,7 +29,7 @@ public class HomeController {
     //메인페이지
     @GetMapping("/")
     public String getHomePage(Model model, Long id, String name, String guestContent, LocalDateTime guestCreateAt) {
-        model.addAttribute("guestBookDTO", new GuestBookDTO(id,name,guestContent,guestCreateAt));
+        model.addAttribute("guestBookDTO", new GuestBookDTO(id, name, guestContent, guestCreateAt));
         return "HomePage";
     }
 
@@ -38,9 +43,10 @@ public class HomeController {
 
         return "redirect:/";
     }
+
     @GetMapping("/guestbook")
-    public String guestPage(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, Model model) {
-        Page<GuestBookDTO> guestBookPage = guestBookService.getGuestBook(pageable);
+    public String guestPage(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+        Page<GuestBookEntity> guestBookPage = guestBookService.getGuestBook(pageable);
         model.addAttribute("guestBookPage", guestBookPage);
         return "GuestPage";
     }

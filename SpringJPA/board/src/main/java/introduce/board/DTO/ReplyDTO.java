@@ -1,8 +1,7 @@
 package introduce.board.DTO;
 
+import introduce.board.Entity.BoardEntity;
 import introduce.board.Entity.ReplyEntity;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -13,24 +12,22 @@ public class ReplyDTO {
     private Long id;
     private String replyContent;
     private LocalDateTime replyCreateAt;
-    private Long boardId;
+    private BoardEntity boardEntity;
 
-    // 생성자를 이용하여 필수 필드 초기화
-    public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, Long boardId) {
+    public ReplyDTO(Long id, String replyContent, LocalDateTime replyCreateAt, BoardEntity boardEntity) {
         this.id = id;
         this.replyContent = replyContent;
         this.replyCreateAt = replyCreateAt;
-        this.boardId = boardId;
+        this.boardEntity = boardEntity;
     }
 
 
-    //DTO를 Entity로 변환
     public static ReplyDTO toReplyDTO(ReplyEntity replyEntity) {
         return new ReplyDTO(
                 replyEntity.getReplyId(),
                 replyEntity.getReplyContent(),
                 replyEntity.getReplyCreateAt(),
-                replyEntity.getBoardEntity().getId()
+                replyEntity.getBoardEntity()
         );
     }
 

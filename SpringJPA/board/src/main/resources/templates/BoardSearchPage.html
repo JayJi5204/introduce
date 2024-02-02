@@ -36,11 +36,11 @@
                   th:each="boardForm : ${search}"
                 >
                   <td class="col-2">
-                    <a th:text="${boardForm.id}">글 번호</a>
+                    <a th:text="${boardForm.boardId}">글 번호</a>
                   </td>
                   <td class="col-6">
                     <a
-                      th:href="@{/board/{id}(id=${boardForm.id})}"
+                      th:href="@{/board/{boardId}(boardId=${boardForm.boardId})}"
                       th:text="${boardForm.title}"
                       >글 제목</a
                     >
