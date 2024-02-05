@@ -1,6 +1,5 @@
 package introduce.board.DTO;
 
-import introduce.board.Entity.GuestBookEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

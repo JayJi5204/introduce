@@ -1,7 +1,6 @@
 package introduce.board.DTO;
 
 import introduce.board.Entity.BoardEntity;
-import introduce.board.Entity.ReplyEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,6 @@
 package introduce.board.DTO;
 
 
-import introduce.board.Entity.BoardEntity;
 import introduce.board.Entity.ReplyEntity;
 import lombok.Getter;
 
@@ -17,15 +16,14 @@ public class BoardDTO {
     private LocalDateTime fixAt;
     private List<ReplyEntity> replyEntity;
 
-    public BoardDTO(Long boardId, String title, String content, LocalDateTime createAt, LocalDateTime fixAt,List<ReplyEntity> replyEntity) {
+    public BoardDTO(Long boardId, String title, String content, LocalDateTime createAt, LocalDateTime fixAt, List<ReplyEntity> replyEntity) {
         this.boardId = boardId;
         this.title = title;
         this.content = content;
         this.createAt = createAt;
         this.fixAt = fixAt;
-        this.replyEntity=replyEntity;
+        this.replyEntity = replyEntity;
     }
-
 
 
 }

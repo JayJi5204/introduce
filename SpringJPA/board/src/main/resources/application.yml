@@ -3,14 +3,16 @@ server:
 
 spring:
   datasource:
-    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database-1.cj83j0x9eefn.ap-northeast-2.rds.amazonaws.com:3306/jayji?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: jayji
-    password: 1234
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: jayji1008
+
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true

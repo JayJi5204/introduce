@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class HomeController {
 
     private final GuestBookService guestBookService;

@@ -65,7 +65,7 @@ public class BoardService {
     @Transactional
     public void updateBoardApi(Long boardId, String title, String content) {
         BoardEntity boardEntity = boardRepository.findById(boardId).orElseThrow();
-        boardEntity.updateFields(title,content);
+        boardEntity.updateFields(title, content);
 
     }
 

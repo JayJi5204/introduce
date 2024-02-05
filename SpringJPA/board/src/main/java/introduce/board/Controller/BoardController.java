@@ -6,7 +6,6 @@ import introduce.board.Entity.BoardEntity;
 import introduce.board.Entity.ReplyEntity;
 import introduce.board.Service.BoardService;
 import introduce.board.Service.ReplyService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -37,23 +35,23 @@ public class BoardController {
             @PageableDefault(page = 0, size = 10, sort = "boardId", direction = Sort.Direction.DESC) Pageable pageable,
             String option, String keyword, Model model
     ) {
-        Page<BoardEntity> list;
+        Page<BoardEntity> page;
 
         if (keyword == null) {  //검색한 결과가 없으면
-            list = boardService.findBoards(pageable);   //게시글 전체 보여주기
+            page = boardService.findBoards(pageable);   //게시글 전체 보여주기
         } else {
-            list = boardService.searchBoards(option, keyword, pageable);    //검색 결과 보여주기
+            page = boardService.searchBoards(option, keyword, pageable);    //검색 결과 보여주기
         }
 
-        int nowPage = list.getNumber() + 1;
+        int nowPage = page.getNumber() + 1;
         int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 9, list.getTotalPages()) - 1;
+        int endPage = Math.min(nowPage + 9, page.getTotalPages()) - 1;
 
-        model.addAttribute("search", list);
+        model.addAttribute("search", page);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
-        model.addAttribute("totalPages", list.getTotalPages());
+        model.addAttribute("totalPages", page.getTotalPages());
 
         return "BoardPage";
     }
@@ -100,7 +98,7 @@ public class BoardController {
     }
 
     @PostMapping("/board/{boardId}/update")
-    public String PostUpdateBoard(@PathVariable("boardId") Long boardId,@ModelAttribute("boardDTO") BoardDTO boardDTO,Model model) {
+    public String PostUpdateBoard(@PathVariable("boardId") Long boardId, @ModelAttribute("boardDTO") BoardDTO boardDTO, Model model) {
         model.addAttribute("Id", boardId);
         boardService.saveBoard(boardDTO);
         return "redirect:/board/{boardId}";
